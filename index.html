@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Приглашение на свадьбу</title>
+    <title>Приглашение</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
-
         * {
             margin: 0;
             padding: 0;
@@ -16,89 +15,90 @@
         body {
             font-family: 'Playfair Display', serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             min-height: 100vh;
             background-color: #fff;
+            text-align: center;
         }
 
         .container {
             display: flex;
             flex-direction: row;
-            max-width: 900px;
-            width: 100%;
             align-items: center;
-            text-align: center;
-        }
-
-        .text-section {
-            width: 50%;
+            justify-content: center;
+            gap: 40px;
+            max-width: 900px;
             padding: 20px;
         }
 
-        .text-section h1 {
-            font-size: 50px;
-            font-weight: 400;
+        .photo {
+            width: 50%;
+            max-width: 400px;
         }
 
-        .text-section h2 {
-            font-size: 16px;
-            margin: 10px 0;
-            font-weight: 400;
-            letter-spacing: 2px;
+        .photo img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
         }
 
-        .text-section .names {
-            font-size: 18px;
-            font-weight: 700;
-            margin: 10px 0;
-        }
-
-        .photo-section {
+        .text {
             width: 50%;
         }
 
-        .photo-section img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 10px;
+        .names {
+            font-size: 32px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .divider {
+            width: 80px;
+            height: 2px;
+            background: black;
+            margin: 10px auto;
+        }
+
+        .date {
+            font-size: 16px;
+            margin-top: 15px;
         }
 
         .countdown {
             display: flex;
             justify-content: center;
+            gap: 15px;
+            font-size: 24px;
             margin-top: 20px;
         }
 
-        .countdown div {
+        .time-box {
+            text-align: center;
+        }
+
+        .time-box span {
+            display: block;
             font-size: 40px;
             font-weight: bold;
-            margin: 0 10px;
         }
 
-        .countdown div span {
-            display: block;
-            font-size: 16px;
-            font-weight: normal;
-        }
-
-        @media screen and (max-width: 768px) {
+        /* АДАПТАЦИЯ ДЛЯ ТЕЛЕФОНОВ */
+        @media (max-width: 768px) {
             .container {
                 flex-direction: column;
+                align-items: center;
                 text-align: center;
             }
 
-            .text-section, .photo-section {
+            .photo, .text {
                 width: 100%;
             }
 
-            .text-section h1 {
-                font-size: 40px;
-            }
-
-            .countdown div {
-                font-size: 30px;
+            .countdown {
+                flex-wrap: wrap;
             }
         }
     </style>
@@ -106,49 +106,46 @@
 <body>
 
     <div class="container">
-        <!-- Левая часть с текстом -->
-        <div class="text-section">
-            <h1>Н <br> НИГИНА <br> & <br> КАРИМ <br> Ж</h1>
-            <h2>26 АПРЕЛЯ 2025</h2>
-            <h2>ЖДЕМ ВАС</h2>
-
-            <!-- Таймер -->
-            <div class="countdown">
-                <div id="weeks">00 <span>недель</span></div>
-                <div id="days">00 <span>дней</span></div>
-                <div id="hours">00 <span>часов</span></div>
-                <div id="minutes">00 <span>минут</span></div>
-                <div id="seconds">00 <span>секунд</span></div>
-            </div>
+        <div class="photo">
+            <img src="https://raw.githubusercontent.com/broevanigina/wedding-invite/main/photo_2025-03-23_23-38-38.jpg" alt="Фото">
         </div>
-
-        <!-- Правая часть с фото -->
-        <div class="photo-section">
-            <img src="https://raw.githubusercontent.com/broevanigina/wedding-invite/main/photo_2025-03-23_23-38-38.jpg">
+        <div class="text">
+            <div class="names">Нигина & Карим</div>
+            <div class="divider"></div>
+            <div class="date">26 апреля 2025</div>
+            <div class="date">Ждем вас</div>
         </div>
     </div>
 
+    <div class="countdown">
+        <div class="time-box"><span id="weeks">00</span> недель</div>
+        <div class="time-box"><span id="days">00</span> дней</div>
+        <div class="time-box"><span id="hours">00</span> часов</div>
+        <div class="time-box"><span id="minutes">00</span> минут</div>
+        <div class="time-box"><span id="seconds">00</span> секунд</div>
+    </div>
+
     <script>
-        function startCountdown() {
-            const weddingDate = new Date("2025-04-26T00:00:00").getTime();
-            setInterval(function() {
-                const now = new Date().getTime();
-                const timeLeft = weddingDate - now;
+        function updateCountdown() {
+            const eventDate = new Date('2025-04-26T00:00:00').getTime();
+            const now = new Date().getTime();
+            const diff = eventDate - now;
 
-                const weeks = Math.floor(timeLeft / (1000 * 60 * 60 * 24 * 7));
-                const days = Math.floor((timeLeft % (1000 * 60 * 60 * 24 * 7)) / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            const weeks = Math.floor(diff / (1000 * 60 * 60 * 24 * 7));
+            const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 7)) / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-                document.getElementById("weeks").innerHTML = weeks + "<span>недель</span>";
-                document.getElementById("days").innerHTML = days + "<span>дней</span>";
-                document.getElementById("hours").innerHTML = hours + "<span>часов</span>";
-                document.getElementById("minutes").innerHTML = minutes + "<span>минут</span>";
-                document.getElementById("seconds").innerHTML = seconds + "<span>секунд</span>";
-            }, 1000);
+            document.getElementById('weeks').textContent = weeks.toString().padStart(2, '0');
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
         }
-        startCountdown();
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
     </script>
 
 </body>
