@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приглашение на свадьбу</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: url('https://source.unsplash.com/1600x900/?wedding') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        h1 {
+            color: #ffeb3b;
+        }
+        #guest-name {
+            font-weight: bold;
+            color: #ffeb3b;
+        }
+        .timer {
+            font-size: 20px;
+            margin: 20px 0;
+            color: #ffeb3b;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            margin-top: 20px;
+            background: #ffeb3b;
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background: #fbc02d;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Дорогой(ая) <span id="guest-name">гость</span>!</h1>
+        <p>Мы рады пригласить тебя на нашу свадьбу! 🎉</p>
+        <p>Дата: <strong>15 июня 2025</strong></p>
+        <p>Место: <strong>Grand Hotel, Алматы</strong></p>
+        
+        <div class="timer" id="countdown"></div>
+        
+        <a href="https://your-rsvp-form.com" class="btn">Подтвердить участие</a>
+    </div>
+
+    <script>
+        // Функция для получения имени гостя из URL
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Подставляем имя в текст
+        window.onload = function() {
+            let guestName = getQueryParam("name");
+            if (guestName) {
+                document.getElementById("guest-name").innerText = guestName;
+            }
+        };
+
+        // Таймер до свадьбы
+        function startCountdown() {
+            const weddingDate = new Date("2025-06-15T00:00:00").getTime();
+            setInterval(function() {
+                const now = new Date().getTime();
+                const timeLeft = weddingDate - now;
+                
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                
+                document.getElementById("countdown").innerHTML = 
+                    `До свадьбы осталось: <strong>${days} дней, ${hours} часов, ${minutes} минут, ${seconds} секунд</strong>`;
+            }, 1000);
+        }
+        startCountdown();
+    </script>
+
+</body>
+</html>
