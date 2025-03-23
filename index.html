@@ -3,96 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Приглашение</title>
+    <title>Свадебное приглашение</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: "Times New Roman", serif;
         }
 
         body, html {
-            font-family: 'Playfair Display', serif;
-            text-align: center;
-            color: white;
-            background: black;
+            width: 100%;
+            height: 100%;
             overflow: hidden;
         }
 
-        .container {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://github.com/broevanigina/wedding-invite/blob/main/photo_2025-03-24_03-11-56.jpg?raw=true') no-repeat center center/cover;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .background-img {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
+        .content {
+            text-align: center;
+            color: white;
+            background: rgba(0, 0, 0, 0.4); /* Затемнение */
+            padding: 20px;
+            border-radius: 10px;
+            animation: fadeIn 2s ease-in-out;
         }
 
-        .overlay {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        .names {
+            font-size: 40px;
+            font-weight: bold;
+            line-height: 1.5;
         }
 
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-
-        .line {
-            width: 100px;
-            height: 2px;
-            background-color: white;
+        .invite-text {
+            font-size: 18px;
             margin: 10px 0;
-            opacity: 0;
         }
 
-        p {
-            font-size: 1em;
-            opacity: 0;
-        }
-
-        h2 {
-            font-size: 1.5em;
-            margin: 20px 0;
-            opacity: 0;
+        .date {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 10px 0;
         }
 
         .countdown {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            font-size: 1.2em;
-            margin-top: 20px;
-            opacity: 0;
+            gap: 15px;
+            margin-top: 10px;
         }
 
         .countdown div {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            font-size: 18px;
+            text-align: center;
         }
 
-        /* Анимация */
-        .fade-in {
-            animation: fadeIn 1.5s forwards;
+        .countdown span {
+            font-size: 24px;
+            font-weight: bold;
         }
 
+        /* Анимация появления */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -106,57 +87,44 @@
     </style>
 </head>
 <body>
-    <div class="container">
-       <img src="https://github.com/broevanigina/wedding-invite/blob/main/photo_2025-03-24_03-11-56.jpg?raw=true" alt="Пара" class="background-img">
-        <div class="overlay">
-            <h1 class="fade-in">НИГИНА <br> & <br> КАРИМ</h1>
-            <div class="line fade-in"></div>
-            <p class="fade-in">БУДЕМ СЧАСТЛИВЫ РАЗДЕЛИТЬ <br> ЭТОТ ДЕНЬ ВМЕСТЕ С ВАМИ</p>
-            <div class="line fade-in"></div>
-            <h2 class="fade-in"><span>26</span> АПРЕЛЯ <span>2025</span></h2>
-
-            <div class="countdown fade-in">
-                <div><span id="weeks">00</span> недель</div>
-                <div><span id="days">00</span> дней</div>
-                <div><span id="hours">00</span> часов</div>
-                <div><span id="minutes">00</span> минут</div>
-                <div><span id="seconds">00</span> секунд</div>
+    <div class="background">
+        <div class="content">
+            <h1 class="names">НИГИНА <br> & <br> КАРИМ</h1>
+            <p class="invite-text">БУДЕМ СЧАСТЛИВЫ РАЗДЕЛИТЬ<br> ЭТОТ ДЕНЬ ВМЕСТЕ С ВАМИ</p>
+            <div class="date">
+                <span>26</span> АПРЕЛЯ <span>2025</span>
+            </div>
+            <div class="countdown">
+                <div><span id="weeks">05</span><br> недель</div>
+                <div><span id="days">00</span><br> дней</div>
+                <div><span id="hours">20</span><br> часов</div>
+                <div><span id="minutes">47</span><br> минут</div>
+                <div><span id="seconds">31</span><br> секунд</div>
             </div>
         </div>
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Анимация появления элементов
-            setTimeout(() => {
-                document.querySelectorAll('.fade-in').forEach(el => {
-                    el.style.animationDelay = "0.5s";
-                    el.classList.add("fade-in");
-                });
-            }, 500);
+        function updateCountdown() {
+            const weddingDate = new Date("April 26, 2025 00:00:00").getTime();
+            const now = new Date().getTime();
+            const timeLeft = weddingDate - now;
 
-            // Таймер обратного отсчета
-            function updateCountdown() {
-                const weddingDate = new Date("2025-04-26T00:00:00").getTime();
-                const now = new Date().getTime();
-                const timeLeft = weddingDate - now;
+            const weeks = Math.floor(timeLeft / (1000 * 60 * 60 * 24 * 7));
+            const days = Math.floor((timeLeft % (1000 * 60 * 60 * 24 * 7)) / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-                const weeks = Math.floor(timeLeft / (1000 * 60 * 60 * 24 * 7));
-                const days = Math.floor((timeLeft % (1000 * 60 * 60 * 24 * 7)) / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            document.getElementById("weeks").textContent = weeks < 10 ? "0" + weeks : weeks;
+            document.getElementById("days").textContent = days < 10 ? "0" + days : days;
+            document.getElementById("hours").textContent = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").textContent = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").textContent = seconds < 10 ? "0" + seconds : seconds;
+        }
 
-                document.getElementById("weeks").textContent = weeks.toString().padStart(2, "0");
-                document.getElementById("days").textContent = days.toString().padStart(2, "0");
-                document.getElementById("hours").textContent = hours.toString().padStart(2, "0");
-                document.getElementById("minutes").textContent = minutes.toString().padStart(2, "0");
-                document.getElementById("seconds").textContent = seconds.toString().padStart(2, "0");
-            }
-
-            setInterval(updateCountdown, 1000);
-            updateCountdown();
-        });
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
     </script>
 </body>
 </html>
