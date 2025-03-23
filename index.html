@@ -5,17 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Свадебное приглашение</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap');
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Times New Roman", serif;
         }
 
         body, html {
             width: 100%;
             height: 100%;
             overflow: hidden;
+            font-family: 'Playfair Display', serif;
         }
 
         .background {
@@ -28,49 +30,72 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            text-align: center;
         }
 
         .content {
-            text-align: center;
-            color: white;
-            background: rgba(0, 0, 0, 0.4); /* Затемнение */
-            padding: 20px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px;
             border-radius: 10px;
+            color: white;
+            width: 90%;
+            max-width: 400px;
             animation: fadeIn 2s ease-in-out;
         }
 
         .names {
-            font-size: 40px;
+            font-size: 42px;
             font-weight: bold;
-            line-height: 1.5;
+            font-family: 'Great Vibes', cursive;
+            margin-bottom: 10px;
         }
 
         .invite-text {
-            font-size: 18px;
-            margin: 10px 0;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
         }
 
         .date {
             font-size: 22px;
             font-weight: bold;
-            margin: 10px 0;
+            margin-bottom: 10px;
         }
 
         .countdown {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             gap: 15px;
-            margin-top: 10px;
         }
 
         .countdown div {
-            font-size: 18px;
+            font-size: 16px;
             text-align: center;
+            min-width: 60px;
         }
 
         .countdown span {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: bold;
+        }
+
+        /* Выплывающая надпись */
+        .bottom-text {
+            position: absolute;
+            bottom: -100px;
+            width: 100%;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px 0;
+            color: white;
+            backdrop-filter: blur(5px);
+            animation: slideUp 3s ease-in-out forwards;
         }
 
         /* Анимация появления */
@@ -84,15 +109,51 @@
                 transform: translateY(0);
             }
         }
+
+        /* Анимация выплывающего текста */
+        @keyframes slideUp {
+            from {
+                bottom: -100px;
+                opacity: 0;
+            }
+            to {
+                bottom: 0;
+                opacity: 1;
+            }
+        }
+
+        /* Адаптация под мобильные устройства */
+        @media (max-width: 768px) {
+            .names {
+                font-size: 36px;
+            }
+            .invite-text {
+                font-size: 14px;
+            }
+            .date {
+                font-size: 18px;
+            }
+            .countdown div {
+                min-width: 50px;
+                font-size: 14px;
+            }
+            .countdown span {
+                font-size: 20px;
+            }
+            .bottom-text {
+                font-size: 16px;
+                padding: 10px 0;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="background">
         <div class="content">
-            <h1 class="names">НИГИНА <br> & <br> КАРИМ</h1>
-            <p class="invite-text">БУДЕМ СЧАСТЛИВЫ РАЗДЕЛИТЬ<br> ЭТОТ ДЕНЬ ВМЕСТЕ С ВАМИ</p>
+            <h1 class="names">Нигина <br> & <br> Карим</h1>
+            <p class="invite-text">Будем счастливы разделить <br> этот день вместе с вами</p>
             <div class="date">
-                <span>26</span> АПРЕЛЯ <span>2025</span>
+                <span>26</span> Апреля <span>2025</span>
             </div>
             <div class="countdown">
                 <div><span id="weeks">05</span><br> недель</div>
@@ -102,6 +163,7 @@
                 <div><span id="seconds">31</span><br> секунд</div>
             </div>
         </div>
+        <div class="bottom-text">Мы ждём вас на нашем празднике!</div>
     </div>
 
     <script>
