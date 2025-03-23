@@ -6,94 +6,82 @@
     <title>Приглашение на свадьбу</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Times New Roman', serif;
             text-align: center;
-            background: url('https://github.com/broevanigina/wedding-invite/blob/main/photo_2025-03-23_23-38-38.jpg?raw=true') no-repeat center center fixed;
-            background-size: cover;
-            color: white;
+            background: #ffffff;
+            color: black;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
         .container {
-            max-width: 600px;
-            margin: 50px auto;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+        }
+        .logo {
+            text-align: center;
+            font-size: 24px;
+        }
+        .logo h1 {
+            margin: 0;
+            font-size: 60px;
+            font-weight: normal;
+        }
+        .logo p {
+            margin: 5px 0;
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
+        .photo img {
+            max-width: 400px;
             border-radius: 10px;
         }
-        h1 {
-            color: #ffeb3b;
-        }
-        #guest-name {
-            font-weight: bold;
-            color: #ffeb3b;
-        }
         .timer {
-            font-size: 20px;
-            margin: 20px 0;
-            color: #ffeb3b;
-        }
-        .btn {
-            display: inline-block;
-            padding: 12px 20px;
+            font-size: 30px;
             margin-top: 20px;
-            background: #ffeb3b;
-            color: black;
-            text-decoration: none;
-            font-size: 18px;
-            border-radius: 5px;
-        }
-        .btn:hover {
-            background: #fbc02d;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>Дорогой(ая) <span id="guest-name">гость</span>!</h1>
-        <p>Мы рады пригласить тебя на нашу свадьбу! 🎉</p>
-        <p>Дата: <strong>15 июня 2025</strong></p>
-        <p>Место: <strong>Grand Hotel, Алматы</strong></p>
-        
-        <div class="timer" id="countdown"></div>
-        
-        <a href="https://your-rsvp-form.com" class="btn">Подтвердить участие</a>
+        <div class="logo">
+            <h1>H</h1>
+            <p>НИГИНА & КАРИМ</p>
+            <h1>K</h1>
+        </div>
+        <div class="photo">
+            <img src="https://raw.githubusercontent.com/broevanigina/wedding-invite/main/photo_2025-03-23_23-38-38.jpg" alt="Нигина и Карим">
+        </div>
     </div>
 
+    <div class="timer" id="countdown"></div>
+
     <script>
-        // Функция для получения имени гостя из URL
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
-        }
-
-        // Подставляем имя в текст
-        window.onload = function() {
-            let guestName = getQueryParam("name");
-            if (guestName) {
-                document.getElementById("guest-name").innerText = guestName;
-            }
-        };
-
-        // Таймер до свадьбы
         function startCountdown() {
             const weddingDate = new Date("2025-06-15T00:00:00").getTime();
             setInterval(function() {
                 const now = new Date().getTime();
                 const timeLeft = weddingDate - now;
                 
-                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                const days = String(Math.floor(timeLeft / (1000 * 60 * 60 * 24))).padStart(2, '0');
+                const hours = String(Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+                const minutes = String(Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+                const seconds = String(Math.floor((timeLeft % (1000 * 60)) / 1000)).padStart(2, '0');
                 
-                document.getElementById("countdown").innerHTML = 
-                    `До свадьбы осталось: <strong>${days} дней, ${hours} часов, ${minutes} минут, ${seconds} секунд</strong>`;
+                document.getElementById("countdown").innerHTML = `${days} ${hours} ${minutes} ${seconds}`;
             }, 1000);
         }
         startCountdown();
     </script>
-
 </body>
 </html>
