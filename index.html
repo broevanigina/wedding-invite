@@ -5,65 +5,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Приглашение на свадьбу</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'Playfair Display', serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #fff;
         }
+
         .container {
-            max-width: 800px;
-            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            max-width: 900px;
+            width: 100%;
+            align-items: center;
+            text-align: center;
+        }
+
+        .text-section {
+            width: 50%;
             padding: 20px;
         }
-        .logo {
-            font-size: 40px;
-            font-weight: 600;
-            margin-bottom: 10px;
+
+        .text-section h1 {
+            font-size: 50px;
+            font-weight: 400;
         }
-        .names {
-            font-size: 14px;
-            text-transform: uppercase;
+
+        .text-section h2 {
+            font-size: 16px;
+            margin: 10px 0;
+            font-weight: 400;
             letter-spacing: 2px;
-            margin-bottom: 20px;
         }
-        .photo {
+
+        .text-section .names {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        .photo-section {
+            width: 50%;
+        }
+
+        .photo-section img {
             width: 100%;
-            max-width: 400px;
+            height: auto;
+            display: block;
             border-radius: 10px;
         }
-        .date {
-            font-size: 16px;
-            text-transform: uppercase;
-            margin-top: 10px;
-        }
+
         .countdown {
             display: flex;
             justify-content: center;
             margin-top: 20px;
-            font-size: 20px;
         }
+
         .countdown div {
-            margin: 0 10px;
-            text-align: center;
-        }
-        .countdown span {
-            display: block;
             font-size: 40px;
             font-weight: bold;
+            margin: 0 10px;
         }
-        .unit {
-            font-size: 14px;
-            text-transform: lowercase;
+
+        .countdown div span {
+            display: block;
+            font-size: 16px;
+            font-weight: normal;
         }
-        @media (max-width: 600px) {
-            .logo {
-                font-size: 30px;
+
+        @media screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
             }
-            .countdown span {
+
+            .text-section, .photo-section {
+                width: 100%;
+            }
+
+            .text-section h1 {
+                font-size: 40px;
+            }
+
+            .countdown div {
                 font-size: 30px;
             }
         }
@@ -72,17 +106,25 @@
 <body>
 
     <div class="container">
-        <div class="logo">Н & К</div>
-        <div class="names">НИГИНА & КАРИМ</div>
-        <img src="your-image-url.jpg" alt="Фото пары" class="photo">
-        <div class="date">26 АПРЕЛЯ 2025 <br> ЖДЁМ ВАС</div>
+        <!-- Левая часть с текстом -->
+        <div class="text-section">
+            <h1>Н <br> ИГИНА <br> & <br> КАРИМ <br> Ж</h1>
+            <h2>26 АПРЕЛЯ 2025</h2>
+            <h2>ЖДЕМ ВАС</h2>
 
-        <div class="countdown" id="timer">
-            <div><span id="weeks">00</span><div class="unit">недель</div></div>
-            <div><span id="days">00</span><div class="unit">дней</div></div>
-            <div><span id="hours">00</span><div class="unit">часов</div></div>
-            <div><span id="minutes">00</span><div class="unit">минут</div></div>
-            <div><span id="seconds">00</span><div class="unit">секунд</div></div>
+            <!-- Таймер -->
+            <div class="countdown">
+                <div id="weeks">00 <span>недель</span></div>
+                <div id="days">00 <span>дней</span></div>
+                <div id="hours">00 <span>часов</span></div>
+                <div id="minutes">00 <span>минут</span></div>
+                <div id="seconds">00 <span>секунд</span></div>
+            </div>
+        </div>
+
+        <!-- Правая часть с фото -->
+        <div class="photo-section">
+            <img src="URL_ТВОЕГО_ФОТО" alt="Фото пары">
         </div>
     </div>
 
@@ -99,11 +141,11 @@
                 const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-                document.getElementById("weeks").innerText = weeks.toString().padStart(2, '0');
-                document.getElementById("days").innerText = days.toString().padStart(2, '0');
-                document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
-                document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
-                document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+                document.getElementById("weeks").innerHTML = weeks + "<span>недель</span>";
+                document.getElementById("days").innerHTML = days + "<span>дней</span>";
+                document.getElementById("hours").innerHTML = hours + "<span>часов</span>";
+                document.getElementById("minutes").innerHTML = minutes + "<span>минут</span>";
+                document.getElementById("seconds").innerHTML = seconds + "<span>секунд</span>";
             }, 1000);
         }
         startCountdown();
