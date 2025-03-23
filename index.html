@@ -5,120 +5,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Приглашение на свадьбу</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap');
+
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Playfair Display', serif;
             text-align: center;
-            background: url('https://github.com/broevanigina/wedding-invite/blob/main/photo_2025-03-23_23-38-38.jpg?raw=true') no-repeat center center fixed;
-            background-size: cover;
-            color: black;
             margin: 0;
             padding: 0;
+            background-color: white;
         }
         .container {
-            max-width: 600px;
-            margin: 50px auto;
-            background: rgba(255, 255, 255, 0.8);
+            max-width: 800px;
+            margin: 0 auto;
             padding: 20px;
+        }
+        .logo {
+            font-size: 40px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .names {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+        .photo {
+            width: 100%;
+            max-width: 400px;
             border-radius: 10px;
         }
-        h1 {
-            font-size: 32px;
-            font-weight: bold;
+        .date {
+            font-size: 16px;
+            text-transform: uppercase;
+            margin-top: 10px;
         }
-        #guest-name {
-            font-weight: bold;
-            color: #ff4081;
-        }
-        .timer {
-            font-size: 36px;
+        .countdown {
             display: flex;
             justify-content: center;
-            gap: 20px;
             margin-top: 20px;
+            font-size: 20px;
         }
-        .timer div {
+        .countdown div {
+            margin: 0 10px;
             text-align: center;
         }
-        .timer span {
+        .countdown span {
             display: block;
-            font-size: 16px;
-            margin-top: 5px;
+            font-size: 40px;
+            font-weight: bold;
         }
-        .btn {
-            display: inline-block;
-            padding: 12px 20px;
-            margin-top: 20px;
-            background: #ff4081;
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            border-radius: 5px;
-        }
-        .btn:hover {
-            background: #e91e63;
+        .unit {
+            font-size: 14px;
+            text-transform: lowercase;
         }
         @media (max-width: 600px) {
-            .timer {
-                font-size: 24px;
-                gap: 10px;
+            .logo {
+                font-size: 30px;
             }
-            h1 {
-                font-size: 24px;
+            .countdown span {
+                font-size: 30px;
             }
         }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <h1>Дорогой(ая) <span id="guest-name">гость</span>!</h1>
-        <p>Мы рады пригласить тебя на нашу свадьбу! 🎉</p>
-        <p>Дата: <strong>26 апреля 2025</strong></p>
-        <p>Место: <strong>Grand Hotel, Алматы</strong></p>
-        
-        <div class="timer" id="countdown">
-            <div><span id="weeks"></span> недель</div>
-            <div><span id="days"></span> дней</div>
-            <div><span id="hours"></span> часов</div>
-            <div><span id="minutes"></span> минут</div>
-            <div><span id="seconds"></span> секунд</div>
+        <div class="logo">Н & К</div>
+        <div class="names">НИГИНА & КАРИМ</div>
+        <img src="your-image-url.jpg" alt="Фото пары" class="photo">
+        <div class="date">26 АПРЕЛЯ 2025 <br> ЖДЁМ ВАС</div>
+
+        <div class="countdown" id="timer">
+            <div><span id="weeks">00</span><div class="unit">недель</div></div>
+            <div><span id="days">00</span><div class="unit">дней</div></div>
+            <div><span id="hours">00</span><div class="unit">часов</div></div>
+            <div><span id="minutes">00</span><div class="unit">минут</div></div>
+            <div><span id="seconds">00</span><div class="unit">секунд</div></div>
         </div>
-        
-        <a href="https://your-rsvp-form.com" class="btn">Подтвердить участие</a>
     </div>
 
     <script>
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
-        }
-
-        window.onload = function() {
-            let guestName = getQueryParam("name");
-            if (guestName) {
-                document.getElementById("guest-name").innerText = guestName;
-            }
-        };
-
         function startCountdown() {
             const weddingDate = new Date("2025-04-26T00:00:00").getTime();
             setInterval(function() {
                 const now = new Date().getTime();
                 const timeLeft = weddingDate - now;
-                
+
                 const weeks = Math.floor(timeLeft / (1000 * 60 * 60 * 24 * 7));
                 const days = Math.floor((timeLeft % (1000 * 60 * 60 * 24 * 7)) / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-                
-                document.getElementById("weeks").innerText = weeks;
-                document.getElementById("days").innerText = days;
-                document.getElementById("hours").innerText = hours;
-                document.getElementById("minutes").innerText = minutes;
-                document.getElementById("seconds").innerText = seconds;
+
+                document.getElementById("weeks").innerText = weeks.toString().padStart(2, '0');
+                document.getElementById("days").innerText = days.toString().padStart(2, '0');
+                document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+                document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+                document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
             }, 1000);
         }
         startCountdown();
     </script>
+
 </body>
 </html>
