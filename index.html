@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Свадебное приглашение</title>
+    <title>Приглашение</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
 
         * {
             margin: 0;
@@ -13,180 +13,83 @@
             box-sizing: border-box;
         }
 
-        body, html {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
+        body {
             font-family: 'Playfair Display', serif;
-        }
-
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://github.com/broevanigina/wedding-invite/blob/main/photo_2025-03-24_03-11-56.jpg?raw=true') no-repeat center center/cover;
             display: flex;
-            justify-content: center;
             align-items: center;
-            flex-direction: column;
-            padding: 20px;
-            text-align: center;
+            justify-content: center;
+            height: 100vh;
+            background: url('https://github.com/broevanigina/wedding-invite/blob/main/photo_2025-03-24_03-11-56.jpg?raw=true') no-repeat center center/cover;
+            overflow: hidden;
         }
 
-        .content {
-            background: rgba(0, 0, 0, 0.4);
-            padding: 15px;
-            border-radius: 10px;
-            color: white;
+        .container {
+            position: absolute;
+            bottom: 5%;
             width: 90%;
-            max-width: 400px;
-            animation: fadeIn 2s ease-in-out;
+            max-width: 600px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1.5s ease-out forwards;
         }
 
         .names {
-            font-size: 42px;
+            font-size: 2rem;
             font-weight: bold;
-            font-family: 'Great Vibes', cursive;
-            margin-bottom: 10px;
-        }
-
-        .invite-text {
-            font-size: 16px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
         }
 
         .date {
-            font-size: 22px;
-            font-weight: bold;
-            margin-bottom: 10px;
+            font-size: 1.2rem;
+            margin: 10px 0;
         }
 
         .countdown {
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
             gap: 15px;
+            font-size: 1rem;
         }
 
         .countdown div {
-            font-size: 16px;
             text-align: center;
-            min-width: 60px;
         }
 
         .countdown span {
-            font-size: 22px;
+            display: block;
+            font-size: 1.5rem;
             font-weight: bold;
         }
 
-        /* Выплывающая надпись */
-        .bottom-text {
-            position: absolute;
-            bottom: -100px;
-            width: 100%;
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 12px 0;
-            color: white;
-            backdrop-filter: blur(5px);
-            animation: slideUp 3s ease-in-out forwards;
-        }
-
-        /* Анимация появления */
-        @keyframes fadeIn {
+        @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(-20px);
+                transform: translateY(50px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-
-        /* Анимация выплывающего текста */
-        @keyframes slideUp {
-            from {
-                bottom: -100px;
-                opacity: 0;
-            }
-            to {
-                bottom: 0;
-                opacity: 1;
-            }
-        }
-
-        /* Адаптация под мобильные устройства */
-        @media (max-width: 768px) {
-            .names {
-                font-size: 36px;
-            }
-            .invite-text {
-                font-size: 14px;
-            }
-            .date {
-                font-size: 18px;
-            }
-            .countdown div {
-                min-width: 50px;
-                font-size: 14px;
-            }
-            .countdown span {
-                font-size: 20px;
-            }
-            .bottom-text {
-                font-size: 16px;
-                padding: 10px 0;
-            }
-        }
     </style>
 </head>
 <body>
-    <div class="background">
-        <div class="content">
-            <h1 class="names">Нигина <br> & <br> Карим</h1>
-            <p class="invite-text">Будем счастливы разделить <br> этот день вместе с вами</p>
-            <div class="date">
-                <span>26</span> Апреля <span>2025</span>
-            </div>
-            <div class="countdown">
-                <div><span id="weeks">05</span><br> недель</div>
-                <div><span id="days">00</span><br> дней</div>
-                <div><span id="hours">20</span><br> часов</div>
-                <div><span id="minutes">47</span><br> минут</div>
-                <div><span id="seconds">31</span><br> секунд</div>
-            </div>
+
+    <div class="container">
+        <div class="names">Нигина & Карим</div>
+        <div class="date">26 апреля 2025</div>
+        <div class="countdown">
+            <div><span id="weeks">05</span>недель</div>
+            <div><span id="days">00</span>дней</div>
+            <div><span id="hours">20</span>часов</div>
+            <div><span id="minutes">47</span>минут</div>
+            <div><span id="seconds">31</span>секунд</div>
         </div>
-        <div class="bottom-text">Мы ждём вас на нашем празднике!</div>
     </div>
 
-    <script>
-        function updateCountdown() {
-            const weddingDate = new Date("April 26, 2025 00:00:00").getTime();
-            const now = new Date().getTime();
-            const timeLeft = weddingDate - now;
-
-            const weeks = Math.floor(timeLeft / (1000 * 60 * 60 * 24 * 7));
-            const days = Math.floor((timeLeft % (1000 * 60 * 60 * 24 * 7)) / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-            document.getElementById("weeks").textContent = weeks < 10 ? "0" + weeks : weeks;
-            document.getElementById("days").textContent = days < 10 ? "0" + days : days;
-            document.getElementById("hours").textContent = hours < 10 ? "0" + hours : hours;
-            document.getElementById("minutes").textContent = minutes < 10 ? "0" + minutes : minutes;
-            document.getElementById("seconds").textContent = seconds < 10 ? "0" + seconds : seconds;
-        }
-
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-    </script>
 </body>
 </html>
