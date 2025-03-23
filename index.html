@@ -15,81 +15,122 @@
 
         body {
             font-family: 'Playfair Display', serif;
+            background: #000;
+            color: white;
+            text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background: url('https://github.com/broevanigina/wedding-invite/blob/main/photo_2025-03-24_03-11-56.jpg?raw=true') no-repeat center center/cover;
+            flex-direction: column;
             overflow: hidden;
         }
 
-        .container {
+        .gold-branches {
             position: absolute;
-            bottom: 5%;
-            width: 90%;
-            max-width: 600px;
-            background: rgba(0, 0, 0, 0.5);
-            color: #fff;
-            text-align: center;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .gold-branch {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: url('https://link_to_your_gold_branch_image.png') no-repeat center center/contain;
+            opacity: 0;
+            animation: fadeIn 2s ease-out forwards;
+        }
+
+        .gold-branch:nth-child(1) { top: 10%; left: 10%; animation-delay: 0.5s; }
+        .gold-branch:nth-child(2) { top: 20%; right: 15%; animation-delay: 1s; }
+        .gold-branch:nth-child(3) { bottom: 10%; left: 20%; animation-delay: 1.5s; }
+        .gold-branch:nth-child(4) { bottom: 15%; right: 10%; animation-delay: 2s; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .text-container {
+            background: rgba(255, 255, 255, 0.1);
             padding: 20px;
             border-radius: 10px;
-            opacity: 0;
-            transform: translateY(50px);
-            animation: fadeInUp 1.5s ease-out forwards;
+            width: 80%;
+            max-width: 600px;
         }
 
-        .names {
+        .guest-name {
             font-size: 2rem;
             font-weight: bold;
+            color: gold;
         }
 
-        .date {
+        .message {
             font-size: 1.2rem;
-            margin: 10px 0;
+            margin-top: 10px;
         }
 
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            font-size: 1rem;
-        }
-
-        .countdown div {
-            text-align: center;
-        }
-
-        .countdown span {
-            display: block;
+        .timer {
             font-size: 1.5rem;
+            margin-top: 15px;
             font-weight: bold;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="names">Нигина & Карим</div>
-        <div class="date">26 апреля 2025</div>
-        <div class="countdown">
-            <div><span id="weeks">05</span>недель</div>
-            <div><span id="days">00</span>дней</div>
-            <div><span id="hours">20</span>часов</div>
-            <div><span id="minutes">47</span>минут</div>
-            <div><span id="seconds">31</span>секунд</div>
-        </div>
+    <div class="gold-branches">
+        <div class="gold-branch"></div>
+        <div class="gold-branch"></div>
+        <div class="gold-branch"></div>
+        <div class="gold-branch"></div>
     </div>
+
+    <div class="text-container">
+        <div class="guest-name" id="guest-name">ДОРОГОЙ ГОСТЬ!</div>
+        <div class="message">
+            Мы рады сообщить Вам, что <b>26.04.2025</b> состоится главное торжество в нашей жизни — день нашей свадьбы!<br>
+            Приглашаем Вас разделить с нами радость этого незабываемого дня.
+        </div>
+        <div class="timer" id="countdown"></div>
+    </div>
+
+    <script>
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Меняем ГОСТЬ на имя, если передано в URL
+        const guestName = getQueryParam("name");
+        if (guestName) {
+            document.getElementById("guest-name").textContent = `ДОРОГОЙ ${guestName}!`;
+        }
+
+        // Таймер обратного отсчета
+        function updateCountdown() {
+            const eventDate = new Date("April 26, 2025 00:00:00").getTime();
+            const now = new Date().getTime();
+            const timeLeft = eventDate - now;
+
+            if (timeLeft > 0) {
+                const weeks = Math.floor(timeLeft / (1000 * 60 * 60 * 24 * 7));
+                const days = Math.floor((timeLeft % (1000 * 60 * 60 * 24 * 7)) / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                document.getElementById("countdown").innerHTML =
+                    `${weeks} недель ${days} дней ${hours} часов ${minutes} минут ${seconds} секунд`;
+            } else {
+                document.getElementById("countdown").innerHTML = "Событие началось!";
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
 
 </body>
 </html>
