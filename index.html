@@ -6,166 +6,170 @@
     <title>Свадебное приглашение</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
             font-family: 'Playfair Display', serif;
-            text-align: center;
             background-color: white;
-            padding: 20px;
+            text-align: center;
+            margin: 0;
+            padding: 0;
         }
         .container {
             display: flex;
-            align-items: center;
             justify-content: center;
-            max-width: 900px;
-            margin: auto;
+            align-items: center;
+            flex-wrap: wrap;
+            height: 100vh;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s ease-out forwards;
         }
-        .left {
-            flex: 1;
+        .text-block {
             text-align: center;
-            padding-right: 20px;
+            width: 50%;
+            animation: fadeInLeft 1.5s ease-out forwards;
         }
-        .left h1 {
+        .image-block {
+            width: 50%;
+            animation: fadeInRight 1.5s ease-out forwards;
+        }
+        .image-block img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+        }
+        h1 {
             font-size: 48px;
-            display: inline-block;
-            position: relative;
+            margin: 0;
         }
-        .left h1::before {
-            content: "";
-            display: block;
-            width: 100%;
-            height: 1px;
-            background: black;
-            position: absolute;
-            top: -10px;
-        }
-        .left h1::after {
-            content: "";
-            display: block;
-            width: 100%;
-            height: 1px;
-            background: black;
-            position: absolute;
-            bottom: -10px;
-        }
-        .left p {
+        h2 {
             font-size: 18px;
+            font-weight: normal;
             margin: 10px 0;
         }
-        .right {
-            flex: 1;
+        .line {
+            width: 50px;
+            height: 2px;
+            background-color: black;
+            margin: 10px auto;
         }
-        .right img {
-            max-width: 100%;
-            display: block;
+        .date {
+            margin-top: 20px;
+            font-size: 16px;
+            opacity: 0;
+            animation: fadeIn 2s ease-out 1s forwards;
         }
-        .countdown {
+        .timer {
             display: flex;
             justify-content: center;
-            gap: 20px;
             margin-top: 30px;
+            opacity: 0;
+            animation: fadeIn 2.5s ease-out 1.5s forwards;
         }
-        .time-box {
+        .timer div {
+            margin: 0 10px;
             text-align: center;
         }
-        .time-box span {
-            display: block;
-            font-size: 40px;
+        .timer span {
+            font-size: 30px;
             font-weight: bold;
         }
-        .time-box small {
-            font-size: 16px;
-            text-transform: uppercase;
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-
-        /* ✅ ТОЧНАЯ МОБИЛЬНАЯ АДАПТАЦИЯ */
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
         @media (max-width: 768px) {
             .container {
-                display: grid;
-                grid-template-columns: 40% 55%;
-                align-items: center;
-                justify-content: space-between;
+                flex-direction: column;
+                text-align: center;
             }
-            .left {
-                text-align: left;
+            .text-block, .image-block {
+                width: 90%;
             }
-            .right img {
-                width: 100%;
-                height: auto;
+            h1 {
+                font-size: 36px;
             }
-            .countdown {
-                flex-wrap: wrap;
-            }
-            .time-box span {
-                font-size: 28px;
-            }
-            .time-box small {
-                font-size: 12px;
+            .timer span {
+                font-size: 24px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="left">
+        <div class="text-block">
             <h1>Н</h1>
-            <p>Нигина & Карим</p>
+            <div class="line"></div>
+            <h2>НИГИНА & КАРИМ</h2>
+            <div class="line"></div>
             <h1>К</h1>
-            <p>26 апреля 2025<br>Ждем вас</p>
+            <div class="date">26 АПРЕЛЯ 2025 <br> ЖДЕМ ВАС</div>
         </div>
-        <div class="right">
-            <img src="https://raw.githubusercontent.com/broevanigina/wedding-invite/main/photo_2025-03-23_23-38-38.jpg" alt="Свадебное фото">
+        <div class="image-block">
+            <img src="https://raw.githubusercontent.com/broevanigina/wedding-invite/main/photo_2025-03-23_23-38-38.jpg" alt="Фото пары">
         </div>
     </div>
-
-    <div class="countdown">
-        <div class="time-box">
-            <span id="weeks">00</span>
-            <small>недель</small>
+    <div class="timer">
+        <div>
+            <span id="weeks">00</span><br>недель
         </div>
-        <div class="time-box">
-            <span id="days">00</span>
-            <small>дней</small>
+        <div>
+            <span id="days">00</span><br>дней
         </div>
-        <div class="time-box">
-            <span id="hours">00</span>
-            <small>часов</small>
+        <div>
+            <span id="hours">00</span><br>часов
         </div>
-        <div class="time-box">
-            <span id="minutes">00</span>
-            <small>минут</small>
+        <div>
+            <span id="minutes">00</span><br>минут
         </div>
-        <div class="time-box">
-            <span id="seconds">00</span>
-            <small>секунд</small>
+        <div>
+            <span id="seconds">00</span><br>секунд
         </div>
     </div>
 
     <script>
-        function updateCountdown() {
-            const weddingDate = new Date("April 26, 2025 00:00:00").getTime();
+        function updateTimer() {
+            const eventDate = new Date("2025-04-26T00:00:00").getTime();
             const now = new Date().getTime();
-            const distance = weddingDate - now;
+            const timeLeft = eventDate - now;
 
-            const weeks = Math.floor(distance / (1000 * 60 * 60 * 24 * 7));
-            const days = Math.floor((distance % (1000 * 60 * 60 * 24 * 7)) / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            if (timeLeft > 0) {
+                const weeks = Math.floor(timeLeft / (1000 * 60 * 60 * 24 * 7));
+                const days = Math.floor((timeLeft % (1000 * 60 * 60 * 24 * 7)) / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-            document.getElementById("weeks").innerText = weeks.toString().padStart(2, "0");
-            document.getElementById("days").innerText = days.toString().padStart(2, "0");
-            document.getElementById("hours").innerText = hours.toString().padStart(2, "0");
-            document.getElementById("minutes").innerText = minutes.toString().padStart(2, "0");
-            document.getElementById("seconds").innerText = seconds.toString().padStart(2, "0");
+                document.getElementById("weeks").textContent = weeks < 10 ? "0" + weeks : weeks;
+                document.getElementById("days").textContent = days < 10 ? "0" + days : days;
+                document.getElementById("hours").textContent = hours < 10 ? "0" + hours : hours;
+                document.getElementById("minutes").textContent = minutes < 10 ? "0" + minutes : minutes;
+                document.getElementById("seconds").textContent = seconds < 10 ? "0" + seconds : seconds;
+            }
         }
-
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+        setInterval(updateTimer, 1000);
+        updateTimer();
     </script>
 </body>
 </html>
