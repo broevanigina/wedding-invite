@@ -18,23 +18,6 @@
             background: black;
             color: white;
             text-align: center;
-            overflow: hidden;
-        }
-
-        /* ВИДЕО НА ФОНЕ */
-        .video-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            z-index: -1;
-        }
-
-        video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
         }
 
         /* ПЕРВЫЙ БЛОК */
@@ -91,7 +74,7 @@
 
         /* ВТОРОЙ БЛОК */
         .second-screen {
-            padding: 12% 5%;
+            padding: 10% 5%;
             background: linear-gradient(to bottom, #000, #e91e63);
             min-height: 100vh;
         }
@@ -157,14 +140,6 @@
     </style>
 </head>
 <body>
-
-    <!-- ВИДЕО НА ФОНЕ -->
-    <div class="video-container">
-        <video autoplay muted playsinline>
-            <source src="https://github.com/broevanigina/wedding-invite/raw/refs/heads/main/IMG_9604.MOV" type="video/mp4">
-            Ваш браузер не поддерживает видео.
-        </video>
-    </div>
 
     <!-- ПЕРВЫЙ БЛОК -->
     <div class="first-screen">
