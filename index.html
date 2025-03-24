@@ -143,6 +143,7 @@
             font-weight: bold;
             color: white;
             background: #ff4081; /* Розовый фон */
+            border-radius: 50%;
             width: 40px;
             height: 40px;
             display: flex;
@@ -150,19 +151,6 @@
             align-items: center;
             position: relative;
             animation: heartbeat 1.5s infinite ease-in-out; /* Добавляем анимацию */
-        }
-
-        /* Форма сердца */
-        .highlight::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 50% 50% 50% 50%/50% 50% 30% 30%; /* Создает форму сердца */
-            transform: rotate(-45deg); /* Поворачивает сердце */
-            background: inherit; /* Наследует розовый фон */
         }
 
         /* Анимация "heartbeat" */
@@ -263,7 +251,7 @@
                 <span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span>
                 <span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
                 <span>21</span><span>22</span><span>23</span><span>24</span><span>25</span>
-                <span class="highlight">26</span> <!-- Это число будет анимировано в форме сердца -->
+                <span class="highlight">26</span> <!-- Это число будет анимировано -->
                 <span>27</span><span>28</span><span>29</span><span>30</span>
             </div>
         </div>
