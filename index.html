@@ -19,7 +19,7 @@
             justify-content: center;
             align-items: flex-end;
             height: 100vh;
-            background: url('https://github.com/broevanigina/wedding-invite/blob/main/photo_2025-03-24_14-01-49.jpg?raw=true') no-repeat center center/cover;
+            background: url('https://github.com/broevanigina/wedding-invite/blob/main/photo_2025-03-24_14-08-16.jpg?raw=true') no-repeat center center/cover;
             background-size: cover;
             overflow: hidden; /* Убрала прокрутку */
         }
@@ -27,7 +27,7 @@
         .container {
             text-align: center;
             width: 100%;
-            padding-bottom: 10%; /* Подняла текст выше */
+            padding-bottom: 12%; /* Подняла текст */
             animation: fadeInUp 1.5s ease-out;
         }
 
@@ -35,36 +35,36 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 180px; /* Сделала еще больше */
+            font-size: 150px; /* Уменьшила */
             font-weight: 200; /* Тоньше */
             color: white;
         }
 
         .divider {
-            font-size: 180px;
+            font-size: 150px;
             font-weight: 100;
             margin: 0 10px;
         }
 
         .names {
             font-family: 'Great Vibes', cursive;
-            font-size: 65px; /* Увеличила */
+            font-size: 50px; /* Чуть меньше */
             color: white;
-            margin-top: -5px; /* Чуть выше */
+            margin-top: -5px;
         }
 
         .invite-text,
         .date {
-            font-size: 36px; /* Увеличила */
+            font-size: 28px; /* Чуть уменьшила */
             font-weight: 400;
             color: white;
-            margin-top: 5px; /* Подняла текст выше */
+            margin-top: 5px;
         }
 
         .date {
-            font-size: 40px; /* Еще крупнее */
+            font-size: 32px;
             font-weight: 500;
-            margin-top: 5px; /* Подняла дату чуть выше */
+            margin-top: 5px;
         }
 
         @keyframes fadeInUp {
@@ -80,31 +80,28 @@
 
         @media (max-width: 768px) {
             .container {
-                padding-bottom: 12%; /* Подняла для мобильных */
+                padding-bottom: 15%; /* Больше отступа снизу */
             }
 
             .initials {
-                font-size: 130px;
+                font-size: 110px; /* Еще меньше для мобильных */
             }
 
             .divider {
-                font-size: 130px;
+                font-size: 110px;
                 margin: 0 8px;
             }
 
             .names {
-                font-size: 50px; /* Увеличила */
-                margin-top: 0;
+                font-size: 40px;
             }
 
             .invite-text {
-                font-size: 30px; /* Увеличила */
-                margin-top: 8px; /* Чуть выше */
+                font-size: 24px;
             }
 
             .date {
-                font-size: 34px; /* Увеличила */
-                margin-top: 8px; /* Чуть выше */
+                font-size: 28px;
             }
         }
     </style>
