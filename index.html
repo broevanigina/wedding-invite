@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Приглашение на свадьбу</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@300;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;600&family=Great+Vibes&display=swap');
 
         * {
             margin: 0;
@@ -19,61 +19,59 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            overflow: hidden;
             background: url('https://github.com/broevanigina/wedding-invite/blob/main/photo_2025-03-24_03-11-56.jpg?raw=true') no-repeat center center/cover;
         }
 
         .container {
+            text-align: center;
             position: relative;
             width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
-            padding-bottom: 5vh;
         }
 
         .initials {
             display: flex;
+            justify-content: center;
             align-items: center;
-            font-size: 150px;
+            font-size: 120px;
             font-weight: 300;
             color: white;
         }
 
-        .letter {
-            font-size: 150px;
-            font-weight: 300;
-        }
-
         .divider {
-            font-size: 150px;
+            font-size: 120px;
             font-weight: 100;
-            margin: 0 20px;
+            margin: 0 15px;
         }
 
         .names {
             font-family: 'Great Vibes', cursive;
             font-size: 45px;
+            color: white;
+            margin-top: -10px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+
+        .invite-text,
+        .date {
+            font-size: 26px; /* Сделала крупнее */
             font-weight: 400;
             color: white;
-            animation: fadeInUp 1.5s ease-in-out;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.5s ease-out forwards;
         }
 
         .invite-text {
-            font-size: 18px;
-            font-weight: 300;
-            color: white;
-            margin-top: 5px;
-            animation: fadeInUp 1.8s ease-in-out;
+            animation-delay: 0.5s;
         }
 
         .date {
-            font-size: 22px;
+            font-size: 28px; /* Увеличила дату */
             font-weight: 500;
-            color: white;
-            margin-top: 5px;
-            animation: fadeInUp 2s ease-in-out;
+            animation-delay: 1s;
         }
 
         @keyframes fadeInUp {
@@ -87,26 +85,26 @@
             }
         }
 
-        /* Адаптация */
         @media (max-width: 768px) {
             .initials {
-                font-size: 100px;
+                font-size: 90px;
             }
-            .letter {
-                font-size: 100px;
-            }
+
             .divider {
-                font-size: 100px;
-                margin: 0 15px;
+                font-size: 90px;
+                margin: 0 10px;
             }
+
             .names {
-                font-size: 35px;
+                font-size: 38px;
             }
+
             .invite-text {
-                font-size: 16px;
+                font-size: 24px;
             }
+
             .date {
-                font-size: 18px;
+                font-size: 26px;
             }
         }
     </style>
