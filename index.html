@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Приглашение на свадьбу</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@300;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@200;700&display=swap');
 
         * {
             margin: 0;
@@ -31,49 +31,18 @@
 
         .overlay {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            bottom: 10%;
             width: 100%;
             text-align: center;
-            color: white; /* Сделала текст белым */
-            animation: fadeIn 1.5s ease-in-out;
+            color: white;
+            animation: fadeInUp 1.5s ease-in-out;
         }
 
-        /* K | N */
-        .initials {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 140px;
-            font-weight: 300;
-            text-transform: uppercase;
-        }
-
-        .letter {
-            font-size: 140px;
-            font-weight: 300;
-        }
-
-        .divider {
-            font-size: 140px;
-            font-weight: 100;
-            margin: 0 20px;
-        }
-
-        /* Имена */
-        .names {
-            font-family: 'Great Vibes', cursive;
-            font-size: 45px;
-            font-weight: 400;
-            margin-top: -5px;
-        }
-
-        /* Анимация появления */
-        @keyframes fadeIn {
+        /* Анимация появления снизу */
+        @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -81,26 +50,72 @@
             }
         }
 
+        /* K | N */
+        .initials {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 180px; /* Сделал еще больше */
+            font-weight: 200; /* Тоньше шрифт */
+            text-transform: uppercase;
+        }
+
+        .letter {
+            font-size: 180px;
+            font-weight: 200;
+        }
+
+        .divider {
+            font-size: 180px;
+            font-weight: 100;
+            margin: 0 20px;
+        }
+
+        /* Имена */
+        .names {
+            font-family: 'Great Vibes', cursive;
+            font-size: 50px;
+            font-weight: 400;
+            margin-top: -10px;
+        }
+
+        /* Текст приглашения */
+        .invite-text {
+            font-size: 22px;
+            font-weight: 300;
+            margin-top: 5px;
+        }
+
+        /* Дата */
+        .date {
+            font-size: 24px;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+
         /* Адаптация для мобильных */
         @media (max-width: 768px) {
             .initials {
-                font-size: 90px;
+                font-size: 120px;
             }
             .letter {
-                font-size: 90px;
+                font-size: 120px;
             }
             .divider {
-                font-size: 90px;
+                font-size: 120px;
                 margin: 0 20px;
             }
             .names {
-                font-size: 35px;
+                font-size: 40px;
+            }
+            .invite-text {
+                font-size: 18px;
+            }
+            .date {
+                font-size: 20px;
             }
             .overlay {
-                top: 45%; /* Чуть подняла текст для мобильных */
-            }
-            body {
-                background-size: cover; /* Фон адаптируется под экран */
+                bottom: 15%;
             }
         }
     </style>
@@ -115,6 +130,8 @@
                 <span class="letter">N</span>
             </div>
             <div class="names">Карим & Нигина</div>
+            <p class="invite-text">Приглашение на свадьбу</p>
+            <p class="date">26.04.2025</p>
         </div>
     </div>
 
