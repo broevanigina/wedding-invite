@@ -159,8 +159,8 @@
         .timeline::before {
             content: '';
             position: absolute;
-            top: 0;
-            bottom: 0;
+            top: -10px; /* Начинается выше первой метки */
+            bottom: -10px; /* Заканчивается ниже последней метки */
             left: 20px;
             width: 4px;
             background: #ff4081; /* Яркий розовый фон */
@@ -169,16 +169,16 @@
             margin-bottom: 20px;
             position: relative;
             display: flex;
-            align-items: center;
+            align-items: flex-start; /* Выравнивание по верхнему краю */
         }
         .timeline-dot {
             position: absolute;
-            top: 50%;
-            left: 22px; /* Смещение на 2 пикселя правее линии */
-            transform: translateY(-50%);
+            top: 10px; /* Корректировка положения точки */
+            left: 18px; /* Смещение точки влево */
             width: 12px;
             height: 12px;
-            background: #ff4081; /* Розовый фон */
+            background: #ffffff; /* Белый цвет точки */
+            border: 2px solid #ff4081; /* Контур точки */
             border-radius: 50%;
         }
         .timeline-time {
@@ -191,6 +191,7 @@
         }
         .timeline-content {
             flex: 1;
+            text-align: left; /* Выравнивание текста по левому краю */
         }
         .timeline-event {
             font-size: 24px;
@@ -205,15 +206,17 @@
         }
         .timeline-link {
             display: inline-block;
-            background: #ff4081;
-            color: white;
+            background: #ffebf0; /* Более светлый фон кнопки */
+            color: #ff4081; /* Цвет текста кнопки */
             padding: 5px 10px;
             text-decoration: none;
             border-radius: 5px;
-            transition: background 0.3s ease;
+            border: 1px solid #ff4081; /* Контур кнопки */
+            transition: background 0.3s ease, color 0.3s ease;
         }
         .timeline-link:hover {
-            background: #ff6b81;
+            background: #ff4081; /* При наведении меняется фон */
+            color: white;
         }
         .timeline-title {
             font-family: 'Great Vibes', cursive;
@@ -249,6 +252,25 @@
         .confirmation-date {
             color: #ff4081; /* Розовый акцент для даты */
             font-weight: bold;
+        }
+        /* БЛОК ЖДЕМ ВАС И ТАЙМИНГ НА ОДНОЙ СТРОКЕ */
+        .waiting-and-timing {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+        }
+        .waiting-message {
+            font-family: 'Great Vibes', cursive;
+            font-size: 45px;
+            font-weight: 600;
+            color: #880e4f;
+        }
+        .timing-label {
+            font-family: 'Didot', serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
         }
         /* БЛОК С ТАЙМЕРОМ И ФОНОМ */
         .countdown-background {
@@ -376,9 +398,13 @@
                 <span>27</span><span>28</span><span>29</span><span>30</span>
             </div>
         </div>
+        <!-- БЛОК ЖДЕМ ВАС И ТАЙМИНГ НА ОДНОЙ СТРОКЕ -->
+        <div class="waiting-and-timing">
+            <div class="waiting-message">ЖДЕМ ВАС!</div>
+            <div class="timing-label">Тайминг мероприятия</div>
+        </div>
         <!-- ТАЙМИНГ МЕРОПРИЯТИЯ -->
         <div class="timeline">
-            <h2 class="timeline-title">Тайминг мероприятия</h2>
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-time">16:15</div>
@@ -418,61 +444,61 @@
             </div>
         </div>
         <!-- БЛОК С ТАЙМЕРОМ И ФОНОМ -->
-        <div class="countdown-background">
-            <div class="countdown-title">До мероприятия осталось:</div>
-            <div class="countdown-timer" id="countdownTimer">
-                <!-- Здесь будет отображаться таймер -->
-            </div>
-            <div class="countdown-labels">
-                <div class="label-item">Дней</div>
-                <div class="label-item">Часов</div>
-                <div class="label-item">Минут</div>
-                <div class="label-item">Секунд</div>
-            </div>
-            <div class="waiting-message">ЖДЕМ ВАС!</div>
-        </div>
+<div class="countdown-background">
+    <div class="countdown-title">До мероприятия:</div>
+    <div class="countdown-timer" id="countdownTimer">
+        <!-- Здесь будет отображаться таймер -->
     </div>
-    <!-- JavaScript для персонализации имени и таймера -->
-    <script>
-        // Функция для извлечения параметров из URL
-        function getUrlParameter(name) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(name) || 'Гость'; // Если параметр отсутствует, используем "Гость"
+    <div class="countdown-labels">
+        <div class="label-item">Дней</div>
+        <div class="label-item">Часов</div>
+        <div class="label-item">Минут</div>
+        <div class="label-item">Секунд</div>
+    </div>
+    <div class="waiting-message">ЖДЕМ ВАС!</div>
+</div>
+</div>
+<!-- JavaScript для персонализации имени и таймера -->
+<script>
+    // Функция для извлечения параметров из URL
+    function getUrlParameter(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name) || 'Гость'; // Если параметр отсутствует, используем "Гость"
+    }
+    // Получаем имя гостя из URL
+    const guestName = getUrlParameter('name');
+    // Находим элемент с ID "guestName" и обновляем его текст
+    const guestSpan = document.getElementById('guestName');
+    if (guestSpan) {
+        guestSpan.textContent = guestName;
+    }
+    // Таймер до мероприятия
+    const countdownDate = new Date("April 26, 2025 00:00:00").getTime();
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
+        // Вычисляем дни, часы, минуты и секунды
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        // Обновляем HTML таймера
+        document.getElementById("countdownTimer").innerHTML = `
+            <div class="timer-item">${days}</div>
+            <div class="timer-item">${hours}</div>
+            <div class="timer-item">${minutes}</div>
+            <div class="timer-item">${seconds}</div>
+        `;
+        // Если мероприятие уже началось
+        if (distance < 0) {
+            clearInterval(interval);
+            document.getElementById("countdownTimer").innerHTML = "Мероприятие началось!";
         }
-        // Получаем имя гостя из URL
-        const guestName = getUrlParameter('name');
-        // Находим элемент с ID "guestName" и обновляем его текст
-        const guestSpan = document.getElementById('guestName');
-        if (guestSpan) {
-            guestSpan.textContent = guestName;
-        }
-        // Таймер до мероприятия
-        const countdownDate = new Date("April 26, 2025 00:00:00").getTime();
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = countdownDate - now;
-            // Вычисляем дни, часы, минуты и секунды
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            // Обновляем HTML таймера
-            document.getElementById("countdownTimer").innerHTML = `
-                <div class="timer-item">${days}</div>
-                <div class="timer-item">${hours}</div>
-                <div class="timer-item">${minutes}</div>
-                <div class="timer-item">${seconds}</div>
-            `;
-            // Если мероприятие уже началось
-            if (distance < 0) {
-                clearInterval(interval);
-                document.getElementById("countdownTimer").innerHTML = "Мероприятие началось!";
-            }
-        }
-        // Обновляем таймер каждую секунду
-        const interval = setInterval(updateCountdown, 1000);
-        // Первый вызов для немедленного отображения
-        updateCountdown();
-    </script>
+    }
+    // Обновляем таймер каждую секунду
+    const interval = setInterval(updateCountdown, 1000);
+    // Первый вызов для немедленного отображения
+    updateCountdown();
+</script>
 </body>
 </html>
