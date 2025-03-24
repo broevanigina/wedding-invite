@@ -26,9 +26,9 @@
             display: flex;
             justify-content: center;
             align-items: flex-end;
-            background: url('https://github.com/broevanigina/wedding-invite/blob/main/photo_2025-03-24_14-08-16.jpg?raw=true') no-repeat center center/cover;
+            background: url('https://github.com/broevanigina/wedding-invite/blob/main/photo_2025-03-24_14-38-55.jpg?raw=true') no-repeat center center/cover;
             background-size: cover;
-            padding-bottom: 7%; /* Опустил текст ниже */
+            padding-bottom: 7%;
         }
 
         .container {
@@ -75,25 +75,81 @@
         /* ВТОРОЙ БЛОК */
         .second-screen {
             padding: 10% 5%;
-            background: linear-gradient(to bottom, #fce4ec, #f8bbd0); /* Нежный розовый градиент */
+            background: linear-gradient(to bottom, #fce4ec, #f8bbd0);
             min-height: 100vh;
-            color: #4a4a4a; /* Темный текст для контраста */
+            color: #4a4a4a;
         }
 
         .guest-name {
-            font-family: 'Great Vibes', cursive; /* Теперь как у Карим & Нигина */
+            font-family: 'Great Vibes', cursive;
             font-size: 55px;
             font-weight: 600;
             margin-bottom: 15px;
-            color: #880e4f; /* Глубокий розовый для акцента */
+            color: #880e4f;
         }
 
         .invite-text-2 {
-            font-family: 'Didot', serif; /* Теперь как "Приглашение на свадьбу" */
+            font-family: 'Didot', serif;
             font-size: 26px;
             font-weight: 400;
             line-height: 1.6;
-            color: #4a4a4a; /* Серо-черный текст для читабельности */
+            color: #4a4a4a;
+        }
+
+        /* КАЛЕНДАРЬ */
+        .calendar-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 30px auto;
+            padding: 15px;
+            background: #fde4f2;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .month {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            font-weight: bold;
+            color: #333;
+        }
+
+        .days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            font-size: 18px;
+            color: #555;
+        }
+
+        .days span {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        .highlight {
+            position: relative;
+            background-color: #ff6b81;
+            color: white;
+            font-weight: bold;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
         }
 
         @keyframes fadeInUp {
@@ -109,7 +165,7 @@
 
         @media (max-width: 768px) {
             .container {
-                padding-bottom: 12%; /* Немного скорректировал для мобильных */
+                padding-bottom: 12%;
             }
 
             .initials {
@@ -166,10 +222,25 @@
             Мы рады сообщить, что 26.04.2025 состоится важное торжество в нашей жизни — день свадьбы!<br>
             Приглашаем тебя разделить с нами радость этого незабываемого дня.
         </p>
+
+        <!-- КАЛЕНДАРЬ -->
+        <div class="calendar-container">
+            <div class="month">Апрель 2025</div>
+            <div class="weekdays">
+                <span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span>
+            </div>
+            <div class="days">
+                <span></span><span></span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span>
+                <span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span>
+                <span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span>
+                <span class="highlight">26</span>
+                <span>27</span><span>28</span><span>29</span><span>30</span>
+            </div>
+        </div>
     </div>
 
     <script>
-        // Получаем имя гостя из URL (пример: ?name=Анна)
         const urlParams = new URLSearchParams(window.location.search);
         const guestName = urlParams.get('name');
         if (guestName) {
