@@ -20,12 +20,72 @@
             text-align: center;
         }
 
+        /* ПЕРВЫЙ БЛОК */
+        .first-screen {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            background: url('https://github.com/broevanigina/wedding-invite/blob/main/photo_2025-03-24_14-38-55.jpg?raw=true') no-repeat center center/cover;
+            background-size: cover;
+            padding-bottom: 10%;
+        }
+
+        .container {
+            text-align: center;
+            width: 100%;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        .initials {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 180px;
+            font-weight: 200;
+            color: white;
+        }
+
+        .divider {
+            font-size: 180px;
+            font-weight: 100;
+            margin: 0 12px;
+        }
+
+        .names {
+            font-family: 'Great Vibes', cursive;
+            font-size: 65px;
+            color: white;
+            margin-top: -10px;
+        }
+
+        .invite-text, .date {
+            font-size: 38px;
+            font-weight: 500;
+            color: white;
+            margin-top: 8px;
+        }
+
+        .date {
+            font-size: 40px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
         /* ВТОРОЙ БЛОК */
         .second-screen {
             padding: 10% 5%;
             background: linear-gradient(to bottom, #fce4ec, #f8bbd0);
             min-height: 100vh;
             color: #4a4a4a;
+        }
+
+        .guest-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 55px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #880e4f;
         }
 
         .invite-text-2 {
@@ -75,36 +135,105 @@
             align-items: center;
             width: 40px;
             height: 40px;
+            position: relative;
         }
 
-        /* СЕРДЕЧКО */
+        /* СЕРДЦЕ ВОКРУГ 26 */
         .highlight {
-            position: relative;
             font-weight: bold;
             color: white;
+            background: #ff4081;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
         }
 
         .highlight::before {
             content: "❤️";
-            font-size: 24px;
+            font-size: 18px;
             position: absolute;
             top: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: heartbeat 1.5s infinite;
+            left: -5px;
         }
 
-        @keyframes heartbeat {
-            0% { transform: translateX(-50%) scale(1); }
-            50% { transform: translateX(-50%) scale(1.3); }
-            100% { transform: translateX(-50%) scale(1); }
+        .highlight::after {
+            content: "❤️";
+            font-size: 18px;
+            position: absolute;
+            top: -5px;
+            right: -5px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding-bottom: 12%;
+            }
+
+            .initials {
+                font-size: 130px;
+            }
+
+            .divider {
+                font-size: 130px;
+                margin: 0 8px;
+            }
+
+            .names {
+                font-size: 50px;
+            }
+
+            .invite-text {
+                font-size: 30px;
+            }
+
+            .date {
+                font-size: 34px;
+            }
+
+            .guest-name {
+                font-size: 45px;
+            }
+
+            .invite-text-2 {
+                font-size: 22px;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- ПЕРВЫЙ БЛОК -->
+    <div class="first-screen">
+        <div class="container">
+            <div class="initials">
+                <span class="letter">K</span>
+                <span class="divider">|</span>
+                <span class="letter">N</span>
+            </div>
+            <div class="names">Карим & Нигина</div>
+            <p class="invite-text">Приглашение на свадьбу</p>
+            <p class="date">26.04.2025</p>
+        </div>
+    </div>
+
     <!-- ВТОРОЙ БЛОК -->
     <div class="second-screen">
+        <div class="guest-name">Дорогой <span id="guestName">Гость</span>,</div>
         <p class="invite-text-2">
             Мы рады сообщить, что 26.04.2025 состоится важное торжество в нашей жизни — день свадьбы!<br>
             Приглашаем тебя разделить с нами радость этого незабываемого дня.
