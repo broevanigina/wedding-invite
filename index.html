@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Видео-приглашение</title>
+    <title>Приглашение на свадьбу</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Didot&family=Great+Vibes&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -12,34 +14,103 @@
         }
 
         body {
+            font-family: 'Didot', serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 100vh;
+            background: url('https://github.com/broevanigina/wedding-invite/blob/main/photo_2025-03-24_03-11-56.jpg?raw=true') no-repeat center center/cover;
+            background-size: cover;
+            overflow: hidden; /* Убрала прокрутку */
+        }
+
+        .container {
+            text-align: center;
+            width: 100%;
+            padding-bottom: 6%;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        .initials {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            background-color: black;
+            font-size: 180px; /* Сделала еще больше */
+            font-weight: 200; /* Тоньше */
+            color: white;
         }
 
-        /* Видео занимает весь экран */
-        .video-container {
-            width: 100%;
-            height: 100%;
+        .divider {
+            font-size: 180px;
+            font-weight: 100;
+            margin: 0 10px;
         }
 
-        .video-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .names {
+            font-family: 'Great Vibes', cursive;
+            font-size: 65px; /* Увеличила */
+            color: white;
+            margin-top: -10px;
+        }
+
+        .invite-text,
+        .date {
+            font-size: 36px; /* Увеличила */
+            font-weight: 400;
+            color: white;
+        }
+
+        .date {
+            font-size: 40px; /* Еще крупнее */
+            font-weight: 500;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .initials {
+                font-size: 130px;
+            }
+
+            .divider {
+                font-size: 130px;
+                margin: 0 8px;
+            }
+
+            .names {
+                font-size: 50px; /* Увеличила */
+            }
+
+            .invite-text {
+                font-size: 30px; /* Увеличила */
+            }
+
+            .date {
+                font-size: 34px; /* Увеличила */
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Видео, которое играет только один раз -->
-    <div class="video-container">
-        <video id="weddingVideo" autoplay playsinline>
-            <source src="https://github.com/broevanigina/wedding-invite/raw/refs/heads/main/IMG_9604.MOV" type="video/mp4">
-        </video>
+    <div class="container">
+        <div class="initials">
+            <span class="letter">K</span>
+            <span class="divider">|</span>
+            <span class="letter">N</span>
+        </div>
+        <div class="names">Карим & Нигина</div>
+        <p class="invite-text">Приглашение на свадьбу</p>
+        <p class="date">26.04.2025</p>
     </div>
 
 </body>
