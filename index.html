@@ -6,11 +6,13 @@
     <title>Приглашение на свадьбу</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Didot&family=Great+Vibes&family=Playfair+Display:wght@500&display=swap');
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Didot', serif;
             background: black;
@@ -32,6 +34,7 @@
         .container {
             text-align: center;
             width: 100%;
+            animation: fadeInUp 1.5s ease-out;
         }
 
         .initials {
@@ -41,8 +44,6 @@
             font-size: 180px;
             font-weight: 200;
             color: white;
-            opacity: 0;
-            transition: opacity 1s ease-out;
         }
 
         .divider {
@@ -56,8 +57,6 @@
             font-size: 65px;
             color: white;
             margin-top: -10px;
-            opacity: 0;
-            transition: opacity 1s ease-out;
         }
 
         .invite-text, .date {
@@ -65,8 +64,6 @@
             font-weight: 500;
             color: white;
             margin-top: 8px;
-            opacity: 0;
-            transition: opacity 1s ease-out;
         }
 
         .date {
@@ -89,9 +86,6 @@
             font-weight: 600;
             margin-bottom: 15px;
             color: #880e4f;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 1s ease-out;
         }
 
         .invite-text-2 {
@@ -100,9 +94,6 @@
             font-weight: 400;
             line-height: 1.6;
             color: #4a4a4a;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 1s ease-out;
         }
 
         /* КАЛЕНДАРЬ */
@@ -115,9 +106,6 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 1s ease-out;
         }
 
         .month {
@@ -187,9 +175,6 @@
             max-width: 600px;
             margin: 0 auto;
             position: relative;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 1s ease-out;
         }
 
         .timeline::before {
@@ -207,9 +192,6 @@
             position: relative;
             display: flex;
             align-items: center;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 1s ease-out;
         }
 
         .timeline-dot {
@@ -281,9 +263,6 @@
             font-family: 'Didot', serif;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 1s ease-out;
         }
 
         .confirmation-title {
@@ -304,6 +283,50 @@
         .confirmation-date {
             color: #ff4081; /* Розовый акцент для даты */
             font-weight: bold;
+        }
+
+        /* СТИЛИ ДЛЯ ТАЙМЕРА */
+        .countdown {
+            margin-top: 30px;
+            background: #fde4f2; /* Нежно-розовый фон */
+            padding: 20px;
+            text-align: center;
+            color: #333; /* Темно-серый текст */
+            font-family: 'Didot', serif;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .countdown-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 45px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #880e4f; /* Цвет как у "Дорогой Гость" */
+        }
+
+        .countdown-timer {
+            font-size: 36px;
+            font-weight: bold;
+            color: #ff4081; /* Розовый фон */
+            margin-bottom: 10px;
+        }
+
+        .countdown-labels {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333; /* Темно-серый текст */
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @media (max-width: 768px) {
@@ -347,30 +370,31 @@
     </style>
 </head>
 <body>
+
     <!-- ПЕРВЫЙ БЛОК -->
     <div class="first-screen">
         <div class="container">
-            <div class="initials animated-element">
+            <div class="initials">
                 <span class="letter">K</span>
                 <span class="divider">|</span>
                 <span class="letter">N</span>
             </div>
-            <div class="names animated-element">Карим & Нигина</div>
-            <p class="invite-text animated-element">Приглашение на свадьбу</p>
-            <p class="date animated-element">26.04.2025</p>
+            <div class="names">Карим & Нигина</div>
+            <p class="invite-text">Приглашение на свадьбу</p>
+            <p class="date">26.04.2025</p>
         </div>
     </div>
 
     <!-- ВТОРОЙ БЛОК -->
     <div class="second-screen">
-        <div class="guest-name animated-element">Дорогой <span id="guestName">Гость</span>,</div>
-        <p class="invite-text-2 animated-element">
+        <div class="guest-name">Дорогой <span id="guestName">Гость</span>,</div>
+        <p class="invite-text-2">
             Мы рады сообщить, что 26.04.2025 состоится важное торжество в нашей жизни — день свадьбы!<br>
             Приглашаем тебя разделить с нами радость этого незабываемого дня.
         </p>
 
         <!-- КАЛЕНДАРЬ -->
-        <div class="calendar-container animated-element">
+        <div class="calendar-container">
             <div class="month">Апрель 2025</div>
             <div class="weekdays">
                 <span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span>
@@ -384,9 +408,8 @@
                 <span>27</span><span>28</span><span>29</span><span>30</span>
             </div>
         </div>
-
         <!-- ТАЙМИНГ МЕРОПРИЯТИЯ -->
-        <div class="timeline animated-element">
+        <div class="timeline">
             <h2 class="timeline-title">Тайминг мероприятия</h2>
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
@@ -420,51 +443,77 @@
         </div>
 
         <!-- БЛОК ПОДТВЕРЖДЕНИЯ -->
-        <div class="confirmation animated-element">
+        <div class="confirmation">
             <div class="confirmation-title">Подтверждение присутствия</div>
             <div class="confirmation-message">
                 Пожалуйста, подтвердите своё присутствие до 
                 <span class="confirmation-date">5 апреля 2025 года</span><br>
             </div>
         </div>
+
+        <!-- ТАЙМЕР ДО МЕРОПРИЯТИЯ -->
+        <div class="countdown">
+            <div class="countdown-title">До мероприятия осталось:</div>
+            <div class="countdown-timer" id="countdownTimer">
+                <!-- Здесь будет отображаться таймер -->
+            </div>
+            <div class="countdown-labels">
+                <span>Дней</span>
+                <span>Часов</span>
+                <span>Минут</span>
+                <span>Секунд</span>
+            </div>
+        </div>
+
+        <!-- JavaScript для персонализации имени -->
+        <script>
+            // Функция для извлечения параметров из URL
+            function getUrlParameter(name) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(name) || 'Гость'; // Если параметр отсутствует, используем "Гость"
+            }
+
+            // Получаем имя гостя из URL
+            const guestName = getUrlParameter('name');
+
+            // Находим элемент с ID "guestName" и обновляем его текст
+            const guestSpan = document.getElementById('guestName');
+            if (guestSpan) {
+                guestSpan.textContent = guestName;
+            }
+
+            // Таймер до мероприятия
+            const countdownDate = new Date("April 26, 2025 00:00:00").getTime();
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = countdownDate - now;
+
+                // Вычисляем дни, часы, минуты и секунды
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Обновляем HTML таймера
+                document.getElementById("countdownTimer").innerHTML = `
+                    ${days} : ${hours} : ${minutes} : ${seconds}
+                `;
+
+                // Если мероприятие уже началось
+                if (distance < 0) {
+                    clearInterval(interval);
+                    document.getElementById("countdownTimer").innerHTML = "Мероприятие началось!";
+                }
+            }
+
+            // Обновляем таймер каждую секунду
+            const interval = setInterval(updateCountdown, 1000);
+
+            // Первый вызов для немедленного отображения
+            updateCountdown();
+        </script>
     </div>
-
-    <!-- JavaScript для персонализации имени и анимаций -->
-    <script>
-        // Функция для извлечения параметров из URL
-        function getUrlParameter(name) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(name) || 'Гость'; // Если параметр отсутствует, используем "Гость"
-        }
-
-        // Получаем имя гостя из URL
-        const guestName = getUrlParameter('name');
-
-        // Находим элемент с ID "guestName" и обновляем его текст
-        const guestSpan = document.getElementById('guestName');
-        if (guestSpan) {
-            guestSpan.textContent = guestName;
-        }
-
-        // Intersection Observer для анимаций
-        document.addEventListener("DOMContentLoaded", () => {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = "translateY(0)";
-                        observer.unobserve(entry.target); // Отключаем наблюдение после активации
-                    }
-                });
-            }, {
-                threshold: 0.2 // Анимация начинается, когда 20% элемента видно
-            });
-
-            // Добавляем наблюдение за всеми элементами с классом animated-element
-            document.querySelectorAll(".animated-element").forEach((element) => {
-                observer.observe(element);
-            });
-        });
-    </script>
 </body>
 </html>
+     
