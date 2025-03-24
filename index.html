@@ -17,6 +17,7 @@
             color: white;
             text-align: center;
         }
+
         /* ПЕРВЫЙ БЛОК */
         .first-screen {
             height: 100vh;
@@ -27,11 +28,12 @@
             background-size: cover;
             padding-bottom: 10%;
         }
+
         .container {
             text-align: center;
             width: 100%;
-            animation: fadeInUp 1.5s ease-out;
         }
+
         .initials {
             display: flex;
             justify-content: center;
@@ -39,29 +41,40 @@
             font-size: 180px;
             font-weight: 200;
             color: white;
+            opacity: 0;
+            transition: opacity 1s ease-out;
         }
+
         .divider {
             font-size: 180px;
             font-weight: 100;
             margin: 0 12px;
         }
+
         .names {
             font-family: 'Great Vibes', cursive;
             font-size: 65px;
             color: white;
             margin-top: -10px;
+            opacity: 0;
+            transition: opacity 1s ease-out;
         }
+
         .invite-text, .date {
             font-size: 38px;
             font-weight: 500;
             color: white;
             margin-top: 8px;
+            opacity: 0;
+            transition: opacity 1s ease-out;
         }
+
         .date {
             font-size: 40px;
             font-weight: 600;
             margin-top: 8px;
         }
+
         /* ВТОРОЙ БЛОК */
         .second-screen {
             padding: 10% 5%;
@@ -69,20 +82,29 @@
             min-height: 100vh;
             color: #4a4a4a;
         }
+
         .guest-name {
             font-family: 'Great Vibes', cursive;
             font-size: 55px;
             font-weight: 600;
             margin-bottom: 15px;
             color: #880e4f;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease-out;
         }
+
         .invite-text-2 {
             font-family: 'Didot', serif;
             font-size: 26px;
             font-weight: 400;
             line-height: 1.6;
             color: #4a4a4a;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease-out;
         }
+
         /* КАЛЕНДАРЬ */
         .calendar-container {
             width: 100%;
@@ -93,18 +115,24 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease-out;
         }
+
         .month {
             font-size: 24px;
             font-weight: bold;
             margin-bottom: 10px;
         }
+
         .weekdays {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             font-weight: bold;
             color: #333;
         }
+
         .days {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
@@ -112,6 +140,7 @@
             font-size: 18px;
             color: #555;
         }
+
         .days span {
             display: flex;
             justify-content: center;
@@ -120,6 +149,7 @@
             height: 40px;
             position: relative;
         }
+
         /* СЕРДЦЕ ВОКРУГ 26 */
         .highlight {
             font-weight: bold;
@@ -134,6 +164,7 @@
             position: relative;
             animation: heartbeat 1.5s infinite ease-in-out; /* Добавляем анимацию */
         }
+
         /* Анимация "heartbeat" */
         @keyframes heartbeat {
             0% {
@@ -149,13 +180,18 @@
                 box-shadow: 0 0 0 0 rgba(255, 64, 129, 0.7);
             }
         }
+
         /* ТАЙМИНГ МЕРОПРИЯТИЯ */
         .timeline {
             margin-top: 30px;
             max-width: 600px;
             margin: 0 auto;
             position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease-out;
         }
+
         .timeline::before {
             content: '';
             position: absolute;
@@ -165,12 +201,17 @@
             width: 4px;
             background: #ff4081; /* Яркий розовый фон */
         }
+
         .timeline-item {
             margin-bottom: 20px;
             position: relative;
             display: flex;
             align-items: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease-out;
         }
+
         .timeline-dot {
             position: absolute;
             top: 50%;
@@ -181,6 +222,7 @@
             background: #ff4081; /* Розовый фон */
             border-radius: 50%;
         }
+
         .timeline-time {
             font-size: 20px;
             font-weight: bold;
@@ -189,20 +231,24 @@
             width: 80px;
             text-align: right;
         }
+
         .timeline-content {
             flex: 1;
         }
+
         .timeline-event {
             font-size: 24px;
             font-weight: bold;
             color: #333;
             margin-bottom: 5px;
         }
+
         .timeline-description {
             font-size: 18px;
             color: #555;
             line-height: 1.5;
         }
+
         .timeline-link {
             display: inline-block;
             background: #ff4081;
@@ -212,9 +258,11 @@
             border-radius: 5px;
             transition: background 0.3s ease;
         }
+
         .timeline-link:hover {
             background: #ff6b81;
         }
+
         .timeline-title {
             font-family: 'Great Vibes', cursive;
             font-size: 55px;
@@ -222,6 +270,7 @@
             margin-bottom: 20px;
             color: #880e4f;
         }
+
         /* БЛОК ПОДТВЕРЖДЕНИЯ */
         .confirmation {
             margin-top: 30px;
@@ -232,60 +281,65 @@
             font-family: 'Didot', serif;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease-out;
         }
+
         .confirmation-title {
             font-family: 'Great Vibes', cursive;
-            font-size: 40px; /* Уменьшенный размер заголовка */
+            font-size: 45px; /* Уменьшенный размер заголовка */
             font-weight: 600;
             margin-bottom: 10px;
             color: #880e4f; /* Цвет как у "Дорогой Гость" */
         }
+
         .confirmation-message {
             font-family: 'Didot', serif;
-            font-size: 18px; /* Уменьшенный размер текста */
+            font-size: 20px; /* Уменьшенный размер текста */
             line-height: 1.6;
             color: #4a4a4a;
         }
+
         .confirmation-date {
             color: #ff4081; /* Розовый акцент для даты */
             font-weight: bold;
         }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+
         @media (max-width: 768px) {
             .container {
                 padding-bottom: 12%;
             }
+
             .initials {
                 font-size: 130px;
             }
+
             .divider {
                 font-size: 130px;
                 margin: 0 8px;
             }
+
             .names {
                 font-size: 50px;
             }
+
             .invite-text {
                 font-size: 30px;
             }
+
             .date {
                 font-size: 34px;
             }
+
             .guest-name {
                 font-size: 45px;
             }
+
             .invite-text-2 {
                 font-size: 22px;
             }
+
             .timeline-title {
                 font-size: 45px;
             }
@@ -296,25 +350,27 @@
     <!-- ПЕРВЫЙ БЛОК -->
     <div class="first-screen">
         <div class="container">
-            <div class="initials">
+            <div class="initials animated-element">
                 <span class="letter">K</span>
                 <span class="divider">|</span>
                 <span class="letter">N</span>
             </div>
-            <div class="names">Карим & Нигина</div>
-            <p class="invite-text">Приглашение на свадьбу</p>
-            <p class="date">26.04.2025</p>
+            <div class="names animated-element">Карим & Нигина</div>
+            <p class="invite-text animated-element">Приглашение на свадьбу</p>
+            <p class="date animated-element">26.04.2025</p>
         </div>
     </div>
+
     <!-- ВТОРОЙ БЛОК -->
     <div class="second-screen">
-        <div class="guest-name">Дорогой <span id="guestName">Гость</span>,</div>
-        <p class="invite-text-2">
+        <div class="guest-name animated-element">Дорогой <span id="guestName">Гость</span>,</div>
+        <p class="invite-text-2 animated-element">
             Мы рады сообщить, что 26.04.2025 состоится важное торжество в нашей жизни — день свадьбы!<br>
             Приглашаем тебя разделить с нами радость этого незабываемого дня.
         </p>
+
         <!-- КАЛЕНДАРЬ -->
-        <div class="calendar-container">
+        <div class="calendar-container animated-element">
             <div class="month">Апрель 2025</div>
             <div class="weekdays">
                 <span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span>
@@ -328,8 +384,9 @@
                 <span>27</span><span>28</span><span>29</span><span>30</span>
             </div>
         </div>
+
         <!-- ТАЙМИНГ МЕРОПРИЯТИЯ -->
-        <div class="timeline">
+        <div class="timeline animated-element">
             <h2 class="timeline-title">Тайминг мероприятия</h2>
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
@@ -361,8 +418,9 @@
                 </div>
             </div>
         </div>
+
         <!-- БЛОК ПОДТВЕРЖДЕНИЯ -->
-        <div class="confirmation">
+        <div class="confirmation animated-element">
             <div class="confirmation-title">Подтверждение присутствия</div>
             <div class="confirmation-message">
                 Пожалуйста, подтвердите своё присутствие до 
@@ -370,20 +428,43 @@
             </div>
         </div>
     </div>
-    <!-- JavaScript для персонализации имени -->
+
+    <!-- JavaScript для персонализации имени и анимаций -->
     <script>
         // Функция для извлечения параметров из URL
         function getUrlParameter(name) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(name) || 'Гость'; // Если параметр отсутствует, используем "Гость"
         }
+
         // Получаем имя гостя из URL
         const guestName = getUrlParameter('name');
+
         // Находим элемент с ID "guestName" и обновляем его текст
         const guestSpan = document.getElementById('guestName');
         if (guestSpan) {
             guestSpan.textContent = guestName;
         }
+
+        // Intersection Observer для анимаций
+        document.addEventListener("DOMContentLoaded", () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = "translateY(0)";
+                        observer.unobserve(entry.target); // Отключаем наблюдение после активации
+                    }
+                });
+            }, {
+                threshold: 0.2 // Анимация начинается, когда 20% элемента видно
+            });
+
+            // Добавляем наблюдение за всеми элементами с классом animated-element
+            document.querySelectorAll(".animated-element").forEach((element) => {
+                observer.observe(element);
+            });
+        });
     </script>
 </body>
 </html>
