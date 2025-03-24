@@ -183,8 +183,8 @@
             top: 0;
             bottom: 0;
             left: 20px;
-            width: 2px;
-            background: #ccc;
+            width: 4px;
+            background: #ff4081; /* Яркий розовый фон */
         }
 
         .timeline-item {
@@ -199,8 +199,8 @@
             top: 50%;
             left: 22px; /* Смещение на 2 пикселя правее линии */
             transform: translateY(-50%);
-            width: 8px;
-            height: 8px;
+            width: 12px;
+            height: 12px;
             background: #ff4081; /* Розовый фон */
             border-radius: 50%;
         }
@@ -251,6 +251,27 @@
             font-weight: 600;
             margin-bottom: 20px;
             color: #880e4f;
+        }
+
+        /* БЛОК ПОДТВЕРЖДЕНИЯ */
+        .confirmation {
+            margin-top: 30px;
+            background: #ccc;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-family: 'Didot', serif;
+        }
+
+        .confirmation-title {
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .confirmation-message {
+            font-size: 20px;
+            line-height: 1.5;
         }
 
         @keyframes fadeInUp {
@@ -344,7 +365,7 @@
             </div>
         </div>
 
-        <!-- ТАЙМИНГ МЕРОПРИЯТИЯ -->
+                <!-- ТАЙМИНГ МЕРОПРИЯТИЯ -->
         <div class="timeline">
             <h2 class="timeline-title">Тайминг мероприятия</h2>
             <div class="timeline-item">
@@ -375,6 +396,17 @@
                 <div class="timeline-content">
                     <div class="timeline-event">Окончание вечера</div>
                 </div>
+            </div>
+        </div>
+
+        <!-- БЛОК ПОДТВЕРЖДЕНИЯ -->
+        <div class="confirmation">
+            <div class="confirmation-title">Подтверждение присутствия</div>
+            <div class="confirmation-message">
+                Пожалуйста, подтвердите своё присутствие до <strong>15 апреля 2025 года</strong>.<br>
+                Для подтверждения свяжитесь с нами по телефону:<br>
+                <a href="tel:+79991234567" style="color: white; text-decoration: none;">+7 (999) 123-45-67</a><br>
+                или напишите в WhatsApp.
             </div>
         </div>
     </div>
