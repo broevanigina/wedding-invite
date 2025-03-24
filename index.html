@@ -223,23 +223,20 @@
             color: #555;
             line-height: 1.5;
         }
-       .timeline-link {
+.timeline-link {
     display: inline-block;
-    background: #fff0f5; /* Очень светлый розовый фон */
-    color: #ff4081; /* Нежно-розовый текст */
-    padding: 8px 16px; /* Увеличенный padding для удобства клика */
-    text-decoration: none;
-    border-radius: 20px; /* Скругленные углы */
-    border: 1px solid #ff4081; /* Нежный контур */
-    font-size: 16px; /* Размер текста */
-    font-weight: 500; /* Полужирный шрифт */
-    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease; /* Плавные переходы */
+    background: transparent; /* Убираем фон */
+    color: #ff4081; /* Розовый цвет текста */
+    padding: 5px 10px;
+    text-decoration: none; /* Убираем подчеркивание */
+    border-radius: 5px;
+    border: 1px solid #ff4081; /* Розовая рамка */
+    transition: background 0.3s ease, color 0.3s ease; /* Плавный переход */
 }
 
 .timeline-link:hover {
-    background: #ffebf0; /* Чуть темнее фон при наведении */
-    color: #ff6b81; /* Темнее розовый текст */
-    transform: scale(1.05); /* Легкое увеличение при наведении */
+    background: #ffebf0; /* Светлый розовый фон при наведении */
+    color: #ff4081; /* Цвет текста остается розовым */
 }
         /* БЛОК ПОДТВЕРЖДЕНИЯ */
         .confirmation {
@@ -419,7 +416,7 @@
             <div class="timeline-content">
                 <div class="timeline-event">Праздничный банкет</div>
                 <div class="timeline-description">
-                    г. Тараз, ул. Ташкентская, 142, банкетный зал Art Triumf, <br>
+                    г. Тараз, ул. Ташкентская, 142, банкетный зал Art Triumf <br>
                     <a href="https://2gis.kz/taraz/geo/70000001082542060/71.376182,42.886992">Открыть на 2ГИС</a>
                 </div>
             </div>
