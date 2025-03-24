@@ -143,6 +143,7 @@
             font-weight: bold;
             color: white;
             background: #ff4081; /* Розовый фон */
+            border-radius: 50%;
             width: 40px;
             height: 40px;
             display: flex;
@@ -150,19 +151,6 @@
             align-items: center;
             position: relative;
             animation: heartbeat 1.5s infinite ease-in-out; /* Добавляем анимацию */
-        }
-
-        /* Форма сердца */
-        .highlight::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 50% 50% 50% 50%/50% 50% 30% 30%; /* Создает форму сердца */
-            transform: rotate(-45deg); /* Поворачивает сердце */
-            background: inherit; /* Наследует розовый фон */
         }
 
         /* Анимация "heartbeat" */
@@ -181,58 +169,62 @@
             }
         }
 
-        /* БЛОК ЛОКАЦИЙ */
-        .location-section {
-            padding: 5% 5%;
-            background: linear-gradient(to bottom, #fde4f2, #fffaf0);
-            min-height: 300px;
-            text-align: center;
-        }
-
-        .location-title {
-            font-family: 'Great Vibes', cursive;
-            font-size: 40px;
-            color: #880e4f;
-            margin-bottom: 20px;
-        }
-
-        .location-card {
-            display: inline-block;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            margin: 10px;
-            width: calc(48%);
+        /* ТАЙМИНГ МЕРОПРИЯТИЯ */
+        .timeline {
+            margin-top: 30px;
             text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .location-name {
-            font-family: 'Didot', serif;
+        .timeline-item {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 4px;
+            height: 4px;
+            background: #ff4081;
+            border-radius: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-time {
             font-size: 24px;
             font-weight: bold;
-            color: #333;
-            margin-bottom: 10px;
+            color: #ff4081;
+            margin-bottom: 5px;
         }
 
-        .location-address {
-            font-family: 'Didot', serif;
+        .timeline-event {
+            font-size: 20px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .timeline-location {
             font-size: 18px;
             color: #555;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
-        .location-link {
+        .timeline-link {
             display: inline-block;
             background: #ff4081;
             color: white;
-            padding: 10px 20px;
+            padding: 5px 10px;
             text-decoration: none;
             border-radius: 5px;
             transition: background 0.3s ease;
         }
 
-        .location-link:hover {
+        .timeline-link:hover {
             background: #ff6b81;
         }
 
@@ -280,11 +272,6 @@
             .invite-text-2 {
                 font-size: 22px;
             }
-
-            .location-card {
-                width: 100%;
-                margin-bottom: 20px;
-            }
         }
     </style>
 </head>
@@ -323,24 +310,30 @@
                 <span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span>
                 <span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
                 <span>21</span><span>22</span><span>23</span><span>24</span><span>25</span>
-                <span class="highlight">26</span> <!-- Это число будет анимировано в форме сердца -->
+                <span class="highlight">26</span> <!-- Это число будет анимировано -->
                 <span>27</span><span>28</span><span>29</span><span>30</span>
             </div>
         </div>
-    </div>
 
-    <!-- БЛОК ЛОКАЦИЙ -->
-    <div class="location-section">
-        <h2 class="location-title">Место проведения</h2>
-        <div class="location-card">
-            <div class="location-name">Зал</div>
-            <div class="location-address">г. Тараз, ул. Петрова, 1</div>
-            <a href="https://2gis.ru/taraz/firm/70000001038887153" class="location-link">Открыть на 2ГИС</a>
-        </div>
-        <div class="location-card">
-            <div class="location-name">Банкетный зал Art Triumf</div>
-            <div class="location-address">г. Тараз, ул. Ташкентская, 142</div>
-            <a href="https://2gis.ru/taraz/firm/70000001038887153" class="location-link">Открыть на 2ГИС</a>
+        <!-- ТАЙМИНГ МЕРОПРИЯТИЯ -->
+        <div class="timeline">
+            <h2 style="text-align: center; font-family: 'Great Vibes', cursive; color: #880e4f;">Тайминг мероприятия</h2>
+            <div class="timeline-item">
+                <div class="timeline-time">16:15</div>
+                <div class="timeline-event">Свадебная речь</div>
+                <div class="timeline-location">Зал, г. Тараз, ул. Петрова, 1</div>
+                <a href="https://2gis.ru/taraz/firm/70000001038887153" class="timeline-link">Открыть на 2ГИС</a>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">18:30</div>
+                <div class="timeline-event">Праздничный банкет</div>
+                <div class="timeline-location">Банкетный зал Art Triumf, г. Тараз, ул. Ташкентская, 142</div>
+                <a href="https://2gis.ru/taraz/firm/70000001038887153" class="timeline-link">Открыть на 2ГИС</a>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">00:00</div>
+                <div class="timeline-event">Окончание вечера</div>
+            </div>
         </div>
     </div>
 
