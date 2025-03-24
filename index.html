@@ -403,59 +403,55 @@
                 <span class="confirmation-date">5 апреля 2025 года</span><br>
             </div>
         </div>
-        <!-- БЛОК С ТАЙМЕРОМ И ФОНОМ -->
-        <div class="countdown-background">
-            <div class="countdown-title">До мероприятия осталось:</div>
-            <div class="countdown-timer" id="countdownTimer">
-                <!-- Здесь будет отображаться таймер -->
-            </div>
-            <div class="countdown-labels">
-                <span>Дней</span>
-                <span>Часов</span>
-                <span>Минут</span>
-                <span>Секунд</span>
-            </div>
-            <div class="waiting-message">ЖДЕМ ВАС!</div>
-        </div>
+      <!-- БЛОК С ТАЙМЕРОМ И ФОНОМ -->
+<div class="countdown-background">
+    <div class="countdown-title">До мероприятия осталось:</div>
+    <div class="countdown-timer" id="countdownTimer">
+        <!-- Здесь будет отображаться таймер -->
     </div>
-    <!-- JavaScript для персонализации имени и таймера -->
-    <script>
-        // Функция для извлечения параметров из URL
-        function getUrlParameter(name) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(name) || 'Гость'; // Если параметр отсутствует, используем "Гость"
+    <div class="countdown-labels">
+        <div class="label-item">Дней</div>
+        <div class="label-item">Часов</div>
+        <div class="label-item">Минут</div>
+        <div class="label-item">Секунд</div>
+    </div>
+    <div class="waiting-message">ЖДЕМ ВАС!</div>
+</div>
+
+<script>
+    // Таймер до мероприятия
+    const countdownDate = new Date("April 26, 2025 00:00:00").getTime();
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
+
+        // Вычисляем дни, часы, минуты и секунды
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Обновляем HTML таймера
+        document.getElementById("countdownTimer").innerHTML = `
+            <div class="timer-item">${days}</div>
+            <div class="timer-item">${hours}</div>
+            <div class="timer-item">${minutes}</div>
+            <div class="timer-item">${seconds}</div>
+        `;
+
+        // Если мероприятие уже началось
+        if (distance < 0) {
+            clearInterval(interval);
+            document.getElementById("countdownTimer").innerHTML = "Мероприятие началось!";
         }
-        // Получаем имя гостя из URL
-        const guestName = getUrlParameter('name');
-        // Находим элемент с ID "guestName" и обновляем его текст
-        const guestSpan = document.getElementById('guestName');
-        if (guestSpan) {
-            guestSpan.textContent = guestName;
-        }
-        // Таймер до мероприятия
-        const countdownDate = new Date("April 26, 2025 00:00:00").getTime();
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = countdownDate - now;
-            // Вычисляем дни, часы, минуты и секунды
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            // Обновляем HTML таймера
-            document.getElementById("countdownTimer").innerHTML = `
-                ${days} : ${hours} : ${minutes} : ${seconds}
-            `;
-            // Если мероприятие уже началось
-            if (distance < 0) {
-                clearInterval(interval);
-                document.getElementById("countdownTimer").innerHTML = "Мероприятие началось!";
-            }
-        }
-        // Обновляем таймер каждую секунду
-        const interval = setInterval(updateCountdown, 1000);
-        // Первый вызов для немедленного отображения
-        updateCountdown();
-    </script>
+    }
+
+    // Обновляем таймер каждую секунду
+    const interval = setInterval(updateCountdown, 1000);
+
+    // Первый вызов для немедленного отображения
+    updateCountdown();
+</script>
 </body>
 </html>
