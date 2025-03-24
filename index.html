@@ -18,6 +18,10 @@
             background: black;
             color: white;
             text-align: center;
+            background-image: url('https://raw.githubusercontent.com/broevanigina/wedding-invite/refs/heads/main/photo_2025-03-24_22-29-21.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         /* ПЕРВЫЙ БЛОК */
@@ -316,6 +320,15 @@
             font-size: 20px;
             font-weight: bold;
             color: #333; /* Темно-серый текст */
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+
+        .countdown-label {
+            border: 2px solid #ff4081; /* Рамка вокруг текста */
+            padding: 5px 10px;
+            border-radius: 5px;
         }
 
         @keyframes fadeInUp {
@@ -458,62 +471,68 @@
                 <!-- Здесь будет отображаться таймер -->
             </div>
             <div class="countdown-labels">
-                <span>Дней</span>
-                <span>Часов</span>
-                <span>Минут</span>
-                <span>Секунд</span>
+                <span class="countdown-label">Дней</span>
+                <span class="countdown-label">Часов</span>
+                <span class="countdown-label">Минут</span>
+                <span class="countdown-label">Секунд</span>
             </div>
         </div>
 
-        <!-- JavaScript для персонализации имени -->
-        <script>
-            // Функция для извлечения параметров из URL
-            function getUrlParameter(name) {
-                const urlParams = new URLSearchParams(window.location.search);
-                return urlParams.get(name) || 'Гость'; // Если параметр отсутствует, используем "Гость"
-            }
+        <!-- СООБЩЕНИЕ "ЖДЕМ ВАС!" -->
+        <div class="waiting-message">
+            ЖДЕМ ВАС!
+        </div>
 
-            // Получаем имя гостя из URL
-            const guestName = getUrlParameter('name');
-
-            // Находим элемент с ID "guestName" и обновляем его текст
-            const guestSpan = document.getElementById('guestName');
-            if (guestSpan) {
-                guestSpan.textContent = guestName;
-            }
-
-            // Таймер до мероприятия
-            const countdownDate = new Date("April 26, 2025 00:00:00").getTime();
-
-            function updateCountdown() {
-                const now = new Date().getTime();
-                const distance = countdownDate - now;
-
-                // Вычисляем дни, часы, минуты и секунды
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                // Обновляем HTML таймера
-                document.getElementById("countdownTimer").innerHTML = `
-                    ${days} : ${hours} : ${minutes} : ${seconds}
-                `;
-
-                // Если мероприятие уже началось
-                if (distance < 0) {
-                    clearInterval(interval);
-                    document.getElementById("countdownTimer").innerHTML = "Мероприятие началось!";
-                }
-            }
-
-            // Обновляем таймер каждую секунду
-            const interval = setInterval(updateCountdown, 1000);
-
-            // Первый вызов для немедленного отображения
-            updateCountdown();
-        </script>
     </div>
 </body>
+
+<!-- JavaScript для персонализации имени и таймера -->
+<script>
+    // Функция для извлечения параметров из URL
+    function getUrlParameter(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name) || 'Гость'; // Если параметр отсутствует, используем "Гость"
+    }
+
+    // Получаем имя гостя из URL
+    const guestName = getUrlParameter('name');
+
+    // Находим элемент с ID "guestName" и обновляем его текст
+    const guestSpan = document.getElementById('guestName');
+    if (guestSpan) {
+        guestSpan.textContent = guestName;
+    }
+
+    // Таймер до мероприятия
+    const countdownDate = new Date("April 26, 2025 00:00:00").getTime();
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
+
+        // Вычисляем дни, часы, минуты и секунды
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Обновляем HTML таймера
+        document.getElementById("countdownTimer").innerHTML = `
+            ${days} : ${hours} : ${minutes} : ${seconds}
+        `;
+
+        // Если мероприятие уже началось
+        if (distance < 0) {
+            clearInterval(interval);
+            document.getElementById("countdownTimer").innerHTML = "Мероприятие началось!";
+        }
+    }
+
+    // Обновляем таймер каждую секунду
+    const interval = setInterval(updateCountdown, 1000);
+
+    // Первый вызов для немедленного отображения
+    updateCountdown();
+</script>
+
 </html>
-     
