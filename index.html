@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Приглашение на свадьбу</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@300&family=Great+Vibes&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Didot&family=Great+Vibes&display=swap');
 
         * {
             margin: 0;
@@ -14,18 +14,20 @@
         }
 
         body {
-            font-family: 'Libre Baskerville', serif;
+            font-family: 'Didot', serif;
             display: flex;
             justify-content: center;
             align-items: flex-end;
             height: 100vh;
             background: url('https://github.com/broevanigina/wedding-invite/blob/main/photo_2025-03-24_03-11-56.jpg?raw=true') no-repeat center center/cover;
+            background-size: cover;
+            overflow: hidden; /* Убрала прокрутку */
         }
 
         .container {
             text-align: center;
             width: 100%;
-            padding-bottom: 5%;
+            padding-bottom: 4%;
             animation: fadeInUp 1.5s ease-out;
         }
 
@@ -33,40 +35,40 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 140px; /* Увеличила буквы */
-            font-weight: 300; /* Сделала тоньше */
+            font-size: 160px; /* Сделала еще больше */
+            font-weight: 200; /* Сделала тоньше */
             color: white;
         }
 
         .divider {
-            font-size: 140px;
+            font-size: 160px;
             font-weight: 100;
-            margin: 0 15px;
+            margin: 0 10px;
         }
 
         .names {
             font-family: 'Great Vibes', cursive;
-            font-size: 45px;
+            font-size: 50px;
             color: white;
             margin-top: -10px;
         }
 
         .invite-text,
         .date {
-            font-size: 26px;
+            font-size: 28px;
             font-weight: 400;
             color: white;
         }
 
         .date {
-            font-size: 28px;
+            font-size: 30px;
             font-weight: 500;
         }
 
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(50px);
+                transform: translateY(40px);
             }
             to {
                 opacity: 1;
@@ -76,24 +78,24 @@
 
         @media (max-width: 768px) {
             .initials {
-                font-size: 110px;
+                font-size: 120px;
             }
 
             .divider {
-                font-size: 110px;
-                margin: 0 10px;
+                font-size: 120px;
+                margin: 0 8px;
             }
 
             .names {
-                font-size: 38px;
+                font-size: 40px;
             }
 
             .invite-text {
-                font-size: 24px;
+                font-size: 22px;
             }
 
             .date {
-                font-size: 26px;
+                font-size: 24px;
             }
         }
     </style>
