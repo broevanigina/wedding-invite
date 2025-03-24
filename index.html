@@ -256,7 +256,7 @@
         /* БЛОК ПОДТВЕРЖДЕНИЯ */
         .confirmation {
             margin-top: 30px;
-            background: #fff; /* Белый фон */
+            background: #fde4f2; /* Нежно-розовый фон */
             padding: 20px;
             text-align: center;
             color: #333; /* Темно-серый текст */
@@ -266,14 +266,23 @@
         }
 
         .confirmation-title {
-            font-size: 30px;
-            font-weight: bold;
-            margin-bottom: 10px;
+            font-family: 'Great Vibes', cursive;
+            font-size: 55px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #880e4f; /* Цвет как у "Дорогой Гость" */
         }
 
         .confirmation-message {
-            font-size: 20px;
-            line-height: 1.5;
+            font-family: 'Didot', serif;
+            font-size: 26px;
+            line-height: 1.6;
+            color: #4a4a4a;
+        }
+
+        .confirmation-date {
+            color: #ff4081; /* Розовый акцент для даты */
+            font-weight: bold;
         }
 
         @keyframes fadeInUp {
@@ -367,7 +376,9 @@
             </div>
         </div>
 
-                <!-- ТАЙМИНГ МЕРОПРИЯТИЯ -->
+        <!-- ТАЙМИНГ МЕРОПРИЯТИЯ -->
+        <div class="timeline">
+            <h2 class="timeline-title">Тайминг меропр        <!-- ТАЙМИНГ МЕРОПРИЯТИЯ -->
         <div class="timeline">
             <h2 class="timeline-title">Тайминг мероприятия</h2>
             <div class="timeline-item">
@@ -405,7 +416,8 @@
         <div class="confirmation">
             <div class="confirmation-title">Подтверждение присутствия</div>
             <div class="confirmation-message">
-                Пожалуйста, подтвердите своё присутствие до <strong>5 апреля 2025 года</strong>.<br>
+                Пожалуйста, <strong>подтвердите своё присутствие</strong> до 
+                <span class="confirmation-date">5 апреля 2025 года</span>.<br>
                 Для подтверждения свяжитесь с нами по телефону:<br>
                 <a href="tel:+79991234567" style="color: #ff4081; text-decoration: none;">+7 (999) 123-45-67</a><br>
                 или напишите в WhatsApp.
