@@ -225,19 +225,21 @@
         }
        .timeline-link {
     display: inline-block;
-    background: #ffebf0; /* Светло-розовый фон */
-    color: #ff4081; /* Розовый текст */
-    padding: 5px 10px;
+    background: #fff0f5; /* Очень светлый розовый фон */
+    color: #ff4081; /* Нежно-розовый текст */
+    padding: 8px 16px; /* Увеличенный padding для удобства клика */
     text-decoration: none;
-    border-radius: 5px;
-    border: 1px solid #ff4081; /* Контур кнопки */
-    transition: background 0.3s ease, color 0.3s ease;
+    border-radius: 20px; /* Скругленные углы */
+    border: 1px solid #ff4081; /* Нежный контур */
+    font-size: 16px; /* Размер текста */
+    font-weight: 500; /* Полужирный шрифт */
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease; /* Плавные переходы */
 }
 
 .timeline-link:hover {
-    background: #fff0f5; /* Более светлый фон при наведении */
-    color: #ff6b81; /* Чуть темнее розовый текст */
-    border-color: #ff6b81; /* Обновленный контур */
+    background: #ffebf0; /* Чуть темнее фон при наведении */
+    color: #ff6b81; /* Темнее розовый текст */
+    transform: scale(1.05); /* Легкое увеличение при наведении */
 }
         /* БЛОК ПОДТВЕРЖДЕНИЯ */
         .confirmation {
@@ -398,39 +400,38 @@
 <div class="waiting-and-timing">
     <div class="timing-label">Тайминг мероприятия</div>
 </div>
-
-<!-- ТАЙМИНГ МЕРОПРИЯТИЯ -->
-<div class="timeline">
-    <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-time">16:15</div>
-        <div class="timeline-content">
-            <div class="timeline-event">Свадебная речь</div>
-            <div class="timeline-description">
-                г. Тараз, ул. Петрова, 1<br>
-                <a href="https://2gis.kz/taraz/geo/70030076202822969/71.375500,42.877752">Открыть на 2ГИС</a>
+    <!-- ТАЙМИНГ МЕРОПРИЯТИЯ -->
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-time">16:15</div>
+            <div class="timeline-content">
+                <div class="timeline-event">Свадебная речь</div>
+                <div class="timeline-description">
+                    г. Тараз, ул. Петрова, 1<br>
+                    <a href="https://2gis.kz/taraz/geo/70030076202822969/71.375500,42.877752">Открыть на 2ГИС</a>
+                </div>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-time">18:30</div>
+            <div class="timeline-content">
+                <div class="timeline-event">Праздничный банкет</div>
+                <div class="timeline-description">
+                    г. Тараз, ул. Ташкентская, 142, банкетный зал Art Triumf, <br>
+                    <a href="https://2gis.kz/taraz/geo/70000001082542060/71.376182,42.886992">Открыть на 2ГИС</a>
+                </div>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-time">00:00</div>
+            <div class="timeline-content">
+                <div class="timeline-event">Окончание вечера</div>
             </div>
         </div>
     </div>
-    <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-time">18:30</div>
-        <div class="timeline-content">
-            <div class="timeline-event">Праздничный банкет</div>
-            <div class="timeline-description">
-                Банкетный зал Art Triumf, г. Тараз, ул. Ташкентская, 142<br>
-                <a href="https://2gis.kz/taraz/geo/70000001082542060/71.376182,42.886992">Открыть на 2ГИС</a>
-            </div>
-        </div>
-    </div>
-    <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-time">00:00</div>
-        <div class="timeline-content">
-            <div class="timeline-event">Окончание вечера</div>
-        </div>
-    </div>
-</div>
 
 <!-- БЛОК ПОДТВЕРЖДЕНИЯ -->
 <div class="confirmation">
@@ -453,7 +454,7 @@
         <div class="label-item">Минут</div>
         <div class="label-item">Секунд</div>
     </div>
-    <div class="waiting-message">ЖДЕМ ВАС!</div>
+    <div class="waiting-message">ЖДЕМ ТЕБЯ!</div>
 </div>
 </div>
 
