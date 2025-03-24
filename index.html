@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Свадебное приглашение</title>
+    <title>Приглашение на свадьбу</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap');
 
@@ -13,180 +13,123 @@
             box-sizing: border-box;
         }
 
-        body, html {
-            width: 100%;
-            height: 100%;
+        body {
             font-family: 'Playfair Display', serif;
-        }
-
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://github.com/broevanigina/wedding-invite/blob/main/photo_2025-03-24_03-11-56.jpg?raw=true') no-repeat center center/cover;
             display: flex;
             justify-content: center;
-            align-items: flex-end; /* Размещаем текст внизу */
-            text-align: center;
-            padding-bottom: 50px; /* Отступ от нижнего края */
+            align-items: center;
+            height: 100vh;
+            background: url('image.png') no-repeat center center/cover;
         }
 
-        .names-container {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            border-radius: 10px;
-            color: white;
-            animation: fadeIn 2s ease-in-out forwards;
-            width: 90%;
-            max-width: 400px;
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 5%;
+            width: 100%;
+            text-align: center;
+            color: black;
+            animation: fadeIn 1.5s ease-in-out;
         }
 
         /* K | N */
         .initials {
-            font-size: 80px;
-            font-weight: bold;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            font-size: 100px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .letter {
+            font-size: 100px;
+            font-weight: bold;
         }
 
         .divider {
-            width: 3px;
-            height: 60px;
-            background: white;
-            display: inline-block;
+            font-size: 100px;
+            font-weight: lighter;
+            margin: 0 20px;
         }
 
-        /* Текст */
+        /* Имена */
         .names {
-            font-size: 42px;
             font-family: 'Great Vibes', cursive;
-            margin-bottom: 10px;
+            font-size: 40px;
+            font-weight: 400;
+            margin-top: -10px;
         }
 
+        /* Текст приглашения */
         .invite-text {
-            font-size: 22px;
+            font-size: 18px;
+            font-weight: 300;
+            margin-top: -5px;
         }
 
+        /* Дата */
         .date {
-            font-size: 24px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            margin-top: 10px;
-        }
-
-        /* Таймер на чёрном фоне */
-        .countdown-container {
-            background: black;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 10px;
-        }
-
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .countdown div {
-            font-size: 16px;
-            text-align: center;
-            min-width: 60px;
-        }
-
-        .countdown span {
             font-size: 22px;
-            font-weight: bold;
+            font-weight: 500;
+            margin-top: -5px;
         }
 
-        /* Подтверждение */
-        .confirmation {
-            text-align: center;
-            padding: 20px;
+        /* Анимация появления */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        /* Адаптация под мобильные */
-        @media (max-width: 600px) {
+        /* Адаптация для мобильных */
+        @media (max-width: 768px) {
             .initials {
-                font-size: 60px;
+                font-size: 70px;
+            }
+            .letter {
+                font-size: 70px;
             }
             .divider {
-                height: 40px;
+                font-size: 70px;
+                margin: 0 10px;
             }
             .names {
-                font-size: 36px;
+                font-size: 30px;
             }
             .invite-text {
-                font-size: 18px;
+                font-size: 16px;
             }
             .date {
                 font-size: 20px;
-            }
-            .names-container {
-                padding: 15px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Фон + текст снизу -->
-    <div class="background">
-        <div class="names-container">
+    <div class="container">
+        <div class="overlay">
             <div class="initials">
-                <span>K</span>
-                <div class="divider"></div>
-                <span>N</span>
+                <span class="letter">K</span>
+                <span class="divider">|</span>
+                <span class="letter">N</span>
             </div>
             <div class="names">Карим & Нигина</div>
             <p class="invite-text">Приглашение на свадьбу</p>
             <p class="date">26.04.2025</p>
         </div>
     </div>
-
-    <!-- Таймер на чёрном фоне -->
-    <div class="countdown-container">
-        <div class="countdown">
-            <div><span id="weeks">00</span><br> недель</div>
-            <div><span id="days">00</span><br> дней</div>
-            <div><span id="hours">00</span><br> часов</div>
-            <div><span id="minutes">00</span><br> минут</div>
-            <div><span id="seconds">00</span><br> секунд</div>
-        </div>
-    </div>
-
-    <!-- Подтверждение -->
-    <div class="confirmation">
-        <p>Пожалуйста, подтвердите своё присутствие до 3 апреля 2025 года.</p>
-        <p>Ждём вас на свадьбе!</p>
-    </div>
-
-    <script>
-        function updateCountdown() {
-            const weddingDate = new Date("April 26, 2025 00:00:00").getTime();
-            const now = new Date().getTime();
-            const timeLeft = weddingDate - now;
-
-            const weeks = Math.floor(timeLeft / (1000 * 60 * 60 * 24 * 7));
-            const days = Math.floor((timeLeft % (1000 * 60 * 60 * 24 * 7)) / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-            document.getElementById("weeks").textContent = weeks < 10 ? "0" + weeks : weeks;
-            document.getElementById("days").textContent = days < 10 ? "0" + days : days;
-            document.getElementById("hours").textContent = hours < 10 ? "0" + hours : hours;
-            document.getElementById("minutes").textContent = minutes < 10 ? "0" + minutes : minutes;
-            document.getElementById("seconds").textContent = seconds < 10 ? "0" + seconds : seconds;
-        }
-
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-    </script>
 
 </body>
 </html>
