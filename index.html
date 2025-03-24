@@ -20,7 +20,7 @@
             text-align: center;
         }
 
-        /* ПЕРВЫЙ БЛОК (ОСТАВЛЯЮ БЕЗ ИЗМЕНЕНИЙ) */
+        /* ПЕРВЫЙ БЛОК */
         .first-screen {
             height: 100vh;
             display: flex;
@@ -28,7 +28,7 @@
             align-items: flex-end;
             background: url('https://github.com/broevanigina/wedding-invite/blob/main/photo_2025-03-24_14-08-16.jpg?raw=true') no-repeat center center/cover;
             background-size: cover;
-            padding-bottom: 14%;
+            padding-bottom: 7%; /* Опустил текст ниже */
         }
 
         .container {
@@ -80,13 +80,14 @@
         }
 
         .guest-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 40px;
+            font-family: 'Great Vibes', cursive; /* Теперь как у Карим & Нигина */
+            font-size: 55px;
             font-weight: 600;
             margin-bottom: 15px;
         }
 
         .invite-text-2 {
+            font-family: 'Didot', serif; /* Теперь как "Приглашение на свадьбу" */
             font-size: 26px;
             font-weight: 400;
             line-height: 1.6;
@@ -105,7 +106,7 @@
 
         @media (max-width: 768px) {
             .container {
-                padding-bottom: 20%;
+                padding-bottom: 12%; /* Немного скорректировал для мобильных */
             }
 
             .initials {
@@ -130,7 +131,7 @@
             }
 
             .guest-name {
-                font-size: 34px;
+                font-size: 45px;
             }
 
             .invite-text-2 {
@@ -141,7 +142,7 @@
 </head>
 <body>
 
-    <!-- ПЕРВЫЙ БЛОК (ОСТАВЛЯЮ БЕЗ ИЗМЕНЕНИЙ) -->
+    <!-- ПЕРВЫЙ БЛОК -->
     <div class="first-screen">
         <div class="container">
             <div class="initials">
@@ -155,7 +156,7 @@
         </div>
     </div>
 
-    <!-- ВТОРОЙ БЛОК (ДОБАВЛЕН НИЖЕ) -->
+    <!-- ВТОРОЙ БЛОК -->
     <div class="second-screen">
         <div class="guest-name">Дорогой <span id="guestName">Гость</span>,</div>
         <p class="invite-text-2">
