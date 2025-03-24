@@ -250,60 +250,54 @@
             color: #ff4081; /* Розовый акцент для даты */
             font-weight: bold;
         }
-   /* БЛОК С ТАЙМЕРОМ И ФОНОМ */
-.countdown-background {
-    margin-top: 30px;
-    background: url('https://raw.githubusercontent.com/broevanigina/wedding-invite/refs/heads/main/photo_2025-03-24_22-28-38.jpg) no-repeat center center/cover;
-    background-size: cover;
-    color: white;
-    padding: 50px 20px;
-    text-align: center;
-    position: relative;
-}
-
-.countdown-title {
-    font-family: 'Great Vibes', cursive;
-    font-size: 45px;
-    font-weight: 600;
-    margin-bottom: 20px;
-}
-
-.countdown-timer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px; /* Расстояние между цифрами */
-    margin-bottom: 10px;
-}
-
-.timer-item {
-    font-size: 36px;
-    font-weight: bold;
-    min-width: 80px; /* Минимальная ширина для выравнивания */
-    text-align: center;
-}
-
-.countdown-labels {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px; /* Расстояние между метками */
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.label-item {
-    min-width: 80px; /* Минимальная ширина для выравнивания */
-    text-align: center;
-}
-
-.waiting-message {
-    font-family: 'Great Vibes', cursive;
-    font-size: 60px;
-    font-weight: 600;
-    margin-top: 30px;
-}
+        /* БЛОК С ТАЙМЕРОМ И ФОНОМ */
+        .countdown-background {
+            margin-top: 30px;
+            background: url('https://raw.githubusercontent.com/broevanigina/wedding-invite/refs/heads/main/photo_2025-03-24_22-28-38.jpg') no-repeat center center/cover;
+            background-size: cover;
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            position: relative;
+        }
+        .countdown-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 45px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px; /* Расстояние между цифрами */
+            margin-bottom: 10px;
+        }
+        .timer-item {
+            font-size: 36px;
+            font-weight: bold;
+            min-width: 80px; /* Минимальная ширина для выравнивания */
+            text-align: center;
+        }
+        .countdown-labels {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px; /* Расстояние между метками */
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .label-item {
+            min-width: 80px; /* Минимальная ширина для выравнивания */
+            text-align: center;
+        }
+        .waiting-message {
+            font-family: 'Great Vibes', cursive;
+            font-size: 60px;
+            font-weight: 600;
+            margin-top: 30px;
+        }
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -423,55 +417,62 @@
                 <span class="confirmation-date">5 апреля 2025 года</span><br>
             </div>
         </div>
-      <!-- БЛОК С ТАЙМЕРОМ И ФОНОМ -->
-<div class="countdown-background">
-    <div class="countdown-title">До мероприятия осталось:</div>
-    <div class="countdown-timer" id="countdownTimer">
-        <!-- Здесь будет отображаться таймер -->
+        <!-- БЛОК С ТАЙМЕРОМ И ФОНОМ -->
+        <div class="countdown-background">
+            <div class="countdown-title">До мероприятия осталось:</div>
+            <div class="countdown-timer" id="countdownTimer">
+                <!-- Здесь будет отображаться таймер -->
+            </div>
+            <div class="countdown-labels">
+                <div class="label-item">Дней</div>
+                <div class="label-item">Часов</div>
+                <div class="label-item">Минут</div>
+                <div class="label-item">Секунд</div>
+            </div>
+            <div class="waiting-message">ЖДЕМ ВАС!</div>
+        </div>
     </div>
-    <div class="countdown-labels">
-        <div class="label-item">Дней</div>
-        <div class="label-item">Часов</div>
-        <div class="label-item">Минут</div>
-        <div class="label-item">Секунд</div>
-    </div>
-    <div class="waiting-message">ЖДЕМ ВАС!</div>
-</div>
-
-<script>
-    // Таймер до мероприятия
-    const countdownDate = new Date("April 26, 2025 00:00:00").getTime();
-
-    function updateCountdown() {
-        const now = new Date().getTime();
-        const distance = countdownDate - now;
-
-        // Вычисляем дни, часы, минуты и секунды
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        // Обновляем HTML таймера
-        document.getElementById("countdownTimer").innerHTML = `
-            <div class="timer-item">${days}</div>
-            <div class="timer-item">${hours}</div>
-            <div class="timer-item">${minutes}</div>
-            <div class="timer-item">${seconds}</div>
-        `;
-
-        // Если мероприятие уже началось
-        if (distance < 0) {
-            clearInterval(interval);
-            document.getElementById("countdownTimer").innerHTML = "Мероприятие началось!";
+    <!-- JavaScript для персонализации имени и таймера -->
+    <script>
+        // Функция для извлечения параметров из URL
+        function getUrlParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name) || 'Гость'; // Если параметр отсутствует, используем "Гость"
         }
-    }
-
-    // Обновляем таймер каждую секунду
-    const interval = setInterval(updateCountdown, 1000);
-
-    // Первый вызов для немедленного отображения
-    updateCountdown();
-</script>
+        // Получаем имя гостя из URL
+        const guestName = getUrlParameter('name');
+        // Находим элемент с ID "guestName" и обновляем его текст
+        const guestSpan = document.getElementById('guestName');
+        if (guestSpan) {
+            guestSpan.textContent = guestName;
+        }
+        // Таймер до мероприятия
+        const countdownDate = new Date("April 26, 2025 00:00:00").getTime();
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+            // Вычисляем дни, часы, минуты и секунды
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            // Обновляем HTML таймера
+            document.getElementById("countdownTimer").innerHTML = `
+                <div class="timer-item">${days}</div>
+                <div class="timer-item">${hours}</div>
+                <div class="timer-item">${minutes}</div>
+                <div class="timer-item">${seconds}</div>
+            `;
+            // Если мероприятие уже началось
+            if (distance < 0) {
+                clearInterval(interval);
+                document.getElementById("countdownTimer").innerHTML = "Мероприятие началось!";
+            }
+        }
+        // Обновляем таймер каждую секунду
+        const interval = setInterval(updateCountdown, 1000);
+        // Первый вызов для немедленного отображения
+        updateCountdown();
+    </script>
 </body>
 </html>
