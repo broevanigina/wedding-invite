@@ -17,16 +17,29 @@
             width: 100%;
             height: 100%;
             background: #f8f4f1;
+            font-family: 'Playfair Display', serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            text-align: center;
         }
 
-        .invitation {
-            text-align: center;
+        /* Фон с фото */
+        .background {
             width: 100%;
-            max-width: 500px;
-            padding: 20px;
+            height: 100vh;
+            background: url('https://github.com/broevanigina/wedding-invite/blob/main/photo_2025-03-24_03-11-56.jpg?raw=true') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Анимация имен */
+        .names-container {
+            position: absolute;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out forwards;
         }
 
         .initials {
@@ -36,6 +49,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            color: white;
         }
 
         .initials span {
@@ -45,40 +59,151 @@
         .divider {
             width: 2px;
             height: 60px;
-            background: black;
+            background: white;
             display: inline-block;
         }
 
         .names {
             font-family: 'Great Vibes', cursive;
-            font-size: 36px;
-            margin: 10px 0;
+            font-size: 42px;
+            color: white;
+            margin-top: 10px;
         }
 
-        .wedding-text {
-            font-size: 16px;
-            letter-spacing: 1px;
-            color: #555;
-            margin-bottom: 10px;
+        /* Блок с текстом приглашения */
+        .invite-section {
+            background: black;
+            color: white;
+            width: 100%;
+            padding: 40px 20px;
+        }
+
+        .invite-text {
+            font-size: 18px;
+            margin-bottom: 20px;
         }
 
         .date {
-            font-size: 22px;
+            font-size: 26px;
             font-weight: bold;
-            margin-top: 10px;
+            margin-bottom: 20px;
         }
+
+        /* Таймер */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 18px;
+        }
+
+        .countdown div {
+            text-align: center;
+        }
+
+        .countdown span {
+            font-size: 26px;
+            font-weight: bold;
+            display: block;
+        }
+
+        /* Подтверждение */
+        .confirmation {
+            margin-top: 30px;
+            font-size: 18px;
+        }
+
+        /* Свадебное расписание */
+        .schedule {
+            margin-top: 40px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .map-link {
+            color: #ffdd57;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
     </style>
 </head>
 <body>
-    <div class="invitation">
-        <div class="initials">
-            <span>K</span>
-            <div class="divider"></div>
-            <span>N</span>
+
+    <!-- Фон с фото -->
+    <div class="background">
+        <div class="names-container">
+            <div class="initials">
+                <span>K</span>
+                <div class="divider"></div>
+                <span>N</span>
+            </div>
+            <div class="names">Карим & Нигина</div>
         </div>
-        <div class="names">Карим & Нигина</div>
-        <div class="wedding-text">Приглашение на свадьбу</div>
-        <div class="date">26.04.2025</div>
     </div>
+
+    <!-- Приглашение -->
+    <div class="invite-section">
+        <p class="invite-text">Дорогой гость! Мы рады сообщить, что</p>
+        <p class="date">26 апреля 2025</p>
+
+        <!-- Таймер -->
+        <div class="countdown">
+            <div><span id="weeks">05</span> недель</div>
+            <div><span id="days">00</span> дней</div>
+            <div><span id="hours">20</span> часов</div>
+            <div><span id="minutes">47</span> минут</div>
+            <div><span id="seconds">31</span> секунд</div>
+        </div>
+
+        <!-- Подтверждение -->
+        <div class="confirmation">
+            <p>Пожалуйста, подтвердите свое присутствие до 3 апреля 2025</p>
+            <p>Ждём вас на свадьбе!</p>
+        </div>
+
+        <!-- Расписание -->
+        <div class="schedule">
+            <p><strong>16:00</strong> — Свадебная регистрация, ул. Петрова</p>
+            <p><strong>18:00</strong> — Торжество, ул. Ташкентская, Италия</p>
+            <p><a class="map-link" href="https://2gis.ru">Посмотреть на карте</a></p>
+        </div>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const weddingDate = new Date("April 26, 2025 00:00:00").getTime();
+            const now = new Date().getTime();
+            const timeLeft = weddingDate - now;
+
+            const weeks = Math.floor(timeLeft / (1000 * 60 * 60 * 24 * 7));
+            const days = Math.floor((timeLeft % (1000 * 60 * 60 * 24 * 7)) / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById("weeks").textContent = weeks < 10 ? "0" + weeks : weeks;
+            document.getElementById("days").textContent = days < 10 ? "0" + days : days;
+            document.getElementById("hours").textContent = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").textContent = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").textContent = seconds < 10 ? "0" + seconds : seconds;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+
 </body>
 </html>
