@@ -16,152 +16,125 @@
         body, html {
             width: 100%;
             height: 100%;
-            background: #f8f4f1;
             font-family: 'Playfair Display', serif;
-            text-align: center;
         }
 
-        /* Фон с фото */
         .background {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 100vh;
+            height: 100%;
             background: url('https://github.com/broevanigina/wedding-invite/blob/main/photo_2025-03-24_03-11-56.jpg?raw=true') no-repeat center center/cover;
             display: flex;
-            align-items: center;
             justify-content: center;
-            position: relative;
+            align-items: flex-end; /* Размещаем текст внизу */
+            text-align: center;
+            padding-bottom: 50px; /* Отступ от нижнего края */
         }
 
-        /* Анимация имен */
         .names-container {
-            position: absolute;
-            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
             color: white;
             animation: fadeIn 2s ease-in-out forwards;
             width: 90%;
+            max-width: 400px;
         }
 
+        /* K | N */
         .initials {
-            font-size: 48px;
+            font-size: 80px;
             font-weight: bold;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .initials span {
-            padding: 0 10px;
-        }
-
         .divider {
-            width: 2px;
-            height: 40px;
+            width: 3px;
+            height: 60px;
             background: white;
             display: inline-block;
         }
 
+        /* Текст */
         .names {
+            font-size: 42px;
             font-family: 'Great Vibes', cursive;
-            font-size: 36px;
-            margin-top: 10px;
+            margin-bottom: 10px;
         }
 
         .invite-text {
-            font-size: 18px;
-            margin-top: 5px;
-            font-weight: 300;
+            font-size: 22px;
         }
 
         .date {
-            font-size: 20px;
+            font-size: 24px;
             font-weight: bold;
             letter-spacing: 2px;
             margin-top: 10px;
         }
 
-        /* Черный блок с текстом */
-        .invite-section {
+        /* Таймер на чёрном фоне */
+        .countdown-container {
             background: black;
             color: white;
-            width: 100%;
-            padding: 40px 20px;
+            text-align: center;
+            padding: 20px;
+            margin-top: 10px;
         }
 
-        /* Таймер */
         .countdown {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            font-size: 16px;
-            margin-top: 20px;
-            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .countdown div {
+            font-size: 16px;
             text-align: center;
-            min-width: 50px;
+            min-width: 60px;
         }
 
         .countdown span {
             font-size: 22px;
             font-weight: bold;
-            display: block;
         }
 
         /* Подтверждение */
         .confirmation {
-            margin-top: 20px;
-            font-size: 16px;
-        }
-
-        /* Свадебное расписание */
-        .schedule {
-            margin-top: 30px;
-            font-size: 16px;
-            line-height: 1.6;
-        }
-
-        .map-link {
-            color: #ffdd57;
-            text-decoration: none;
-            font-weight: bold;
+            text-align: center;
+            padding: 20px;
         }
 
         /* Адаптация под мобильные */
         @media (max-width: 600px) {
             .initials {
-                font-size: 36px;
+                font-size: 60px;
             }
             .divider {
-                height: 30px;
+                height: 40px;
             }
             .names {
-                font-size: 28px;
+                font-size: 36px;
             }
             .invite-text {
-                font-size: 16px;
-            }
-            .date {
                 font-size: 18px;
             }
-        }
-
-        /* Анимации */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
+            .date {
+                font-size: 20px;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            .names-container {
+                padding: 15px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Фон с фото -->
+    <!-- Фон + текст снизу -->
     <div class="background">
         <div class="names-container">
             <div class="initials">
@@ -175,31 +148,21 @@
         </div>
     </div>
 
-    <!-- Приглашение -->
-    <div class="invite-section">
-        <p class="invite-text">Дорогой гость! Мы рады сообщить, что</p>
-
-        <!-- Таймер -->
+    <!-- Таймер на чёрном фоне -->
+    <div class="countdown-container">
         <div class="countdown">
-            <div><span id="weeks">05</span> недель</div>
-            <div><span id="days">00</span> дней</div>
-            <div><span id="hours">20</span> часов</div>
-            <div><span id="minutes">47</span> минут</div>
-            <div><span id="seconds">31</span> секунд</div>
+            <div><span id="weeks">00</span><br> недель</div>
+            <div><span id="days">00</span><br> дней</div>
+            <div><span id="hours">00</span><br> часов</div>
+            <div><span id="minutes">00</span><br> минут</div>
+            <div><span id="seconds">00</span><br> секунд</div>
         </div>
+    </div>
 
-        <!-- Подтверждение -->
-        <div class="confirmation">
-            <p>Пожалуйста, подтвердите свое присутствие до 3 апреля 2025</p>
-            <p>Ждём вас на свадьбе!</p>
-        </div>
-
-        <!-- Расписание -->
-        <div class="schedule">
-            <p><strong>16:00</strong> — Свадебная регистрация, ул. Петрова</p>
-            <p><strong>18:00</strong> — Торжество, ул. Ташкентская, Италия</p>
-            <p><a class="map-link" href="https://2gis.ru">Посмотреть на карте</a></p>
-        </div>
+    <!-- Подтверждение -->
+    <div class="confirmation">
+        <p>Пожалуйста, подтвердите своё присутствие до 3 апреля 2025 года.</p>
+        <p>Ждём вас на свадьбе!</p>
     </div>
 
     <script>
