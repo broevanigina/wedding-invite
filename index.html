@@ -18,9 +18,6 @@
             height: 100%;
             background: #f8f4f1;
             font-family: 'Playfair Display', serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             text-align: center;
         }
 
@@ -39,38 +36,50 @@
         .names-container {
             position: absolute;
             text-align: center;
+            color: white;
             animation: fadeIn 2s ease-in-out forwards;
+            width: 90%;
         }
 
         .initials {
-            font-size: 64px;
+            font-size: 48px;
             font-weight: bold;
-            font-family: 'Playfair Display', serif;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
         }
 
         .initials span {
-            padding: 0 20px;
+            padding: 0 10px;
         }
 
         .divider {
             width: 2px;
-            height: 60px;
+            height: 40px;
             background: white;
             display: inline-block;
         }
 
         .names {
             font-family: 'Great Vibes', cursive;
-            font-size: 42px;
-            color: white;
+            font-size: 36px;
             margin-top: 10px;
         }
 
-        /* Блок с текстом приглашения */
+        .invite-text {
+            font-size: 18px;
+            margin-top: 5px;
+            font-weight: 300;
+        }
+
+        .date {
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-top: 10px;
+        }
+
+        /* Черный блок с текстом */
         .invite-section {
             background: black;
             color: white;
@@ -78,45 +87,37 @@
             padding: 40px 20px;
         }
 
-        .invite-text {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-
-        .date {
-            font-size: 26px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
         /* Таймер */
         .countdown {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            font-size: 18px;
+            gap: 10px;
+            font-size: 16px;
+            margin-top: 20px;
+            flex-wrap: wrap;
         }
 
         .countdown div {
             text-align: center;
+            min-width: 50px;
         }
 
         .countdown span {
-            font-size: 26px;
+            font-size: 22px;
             font-weight: bold;
             display: block;
         }
 
         /* Подтверждение */
         .confirmation {
-            margin-top: 30px;
-            font-size: 18px;
+            margin-top: 20px;
+            font-size: 16px;
         }
 
         /* Свадебное расписание */
         .schedule {
-            margin-top: 40px;
-            font-size: 18px;
+            margin-top: 30px;
+            font-size: 16px;
             line-height: 1.6;
         }
 
@@ -124,6 +125,25 @@
             color: #ffdd57;
             text-decoration: none;
             font-weight: bold;
+        }
+
+        /* Адаптация под мобильные */
+        @media (max-width: 600px) {
+            .initials {
+                font-size: 36px;
+            }
+            .divider {
+                height: 30px;
+            }
+            .names {
+                font-size: 28px;
+            }
+            .invite-text {
+                font-size: 16px;
+            }
+            .date {
+                font-size: 18px;
+            }
         }
 
         /* Анимации */
@@ -137,7 +157,6 @@
                 transform: translateY(0);
             }
         }
-
     </style>
 </head>
 <body>
@@ -151,13 +170,14 @@
                 <span>N</span>
             </div>
             <div class="names">Карим & Нигина</div>
+            <p class="invite-text">Приглашение на свадьбу</p>
+            <p class="date">26.04.2025</p>
         </div>
     </div>
 
     <!-- Приглашение -->
     <div class="invite-section">
         <p class="invite-text">Дорогой гость! Мы рады сообщить, что</p>
-        <p class="date">26 апреля 2025</p>
 
         <!-- Таймер -->
         <div class="countdown">
