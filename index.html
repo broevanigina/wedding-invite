@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Приглашение на свадьбу</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Didot&family=Great+Vibes&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Didot&family=Great+Vibes&family=Playfair+Display:wght@500&display=swap');
 
         * {
             margin: 0;
@@ -15,19 +15,42 @@
 
         body {
             font-family: 'Didot', serif;
+            background: black;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* ВИДЕО НА ФОНЕ */
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ПЕРВЫЙ БЛОК */
+        .first-screen {
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: flex-end;
-            height: 100vh;
             background: url('https://github.com/broevanigina/wedding-invite/blob/main/photo_2025-03-24_14-08-16.jpg?raw=true') no-repeat center center/cover;
             background-size: cover;
-            overflow: hidden;
+            padding-bottom: 14%;
         }
 
         .container {
             text-align: center;
             width: 100%;
-            padding-bottom: 14%; /* Подняла текст, чтобы влезало */
             animation: fadeInUp 1.5s ease-out;
         }
 
@@ -35,7 +58,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 180px; /* Увеличила */
+            font-size: 180px;
             font-weight: 200;
             color: white;
         }
@@ -48,14 +71,13 @@
 
         .names {
             font-family: 'Great Vibes', cursive;
-            font-size: 65px; /* Увеличила */
+            font-size: 65px;
             color: white;
             margin-top: -10px;
         }
 
-        .invite-text,
-        .date {
-            font-size: 38px; /* Сделала крупнее */
+        .invite-text, .date {
+            font-size: 38px;
             font-weight: 500;
             color: white;
             margin-top: 8px;
@@ -65,6 +87,26 @@
             font-size: 40px;
             font-weight: 600;
             margin-top: 8px;
+        }
+
+        /* ВТОРОЙ БЛОК */
+        .second-screen {
+            padding: 12% 5%;
+            background: linear-gradient(to bottom, #000, #e91e63);
+            min-height: 100vh;
+        }
+
+        .guest-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 40px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .invite-text-2 {
+            font-size: 26px;
+            font-weight: 400;
+            line-height: 1.6;
         }
 
         @keyframes fadeInUp {
@@ -80,11 +122,11 @@
 
         @media (max-width: 768px) {
             .container {
-                padding-bottom: 20%; /* Больше отступа, чтобы не сдвигалось */
+                padding-bottom: 20%;
             }
 
             .initials {
-                font-size: 130px; /* Чуть меньше для телефонов */
+                font-size: 130px;
             }
 
             .divider {
@@ -103,21 +145,58 @@
             .date {
                 font-size: 34px;
             }
+
+            .guest-name {
+                font-size: 34px;
+            }
+
+            .invite-text-2 {
+                font-size: 22px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="initials">
-            <span class="letter">K</span>
-            <span class="divider">|</span>
-            <span class="letter">N</span>
-        </div>
-        <div class="names">Карим & Нигина</div>
-        <p class="invite-text">Приглашение на свадьбу</p>
-        <p class="date">26.04.2025</p>
+    <!-- ВИДЕО НА ФОНЕ -->
+    <div class="video-container">
+        <video autoplay muted playsinline>
+            <source src="https://github.com/broevanigina/wedding-invite/raw/refs/heads/main/IMG_9604.MOV" type="video/mp4">
+            Ваш браузер не поддерживает видео.
+        </video>
     </div>
+
+    <!-- ПЕРВЫЙ БЛОК -->
+    <div class="first-screen">
+        <div class="container">
+            <div class="initials">
+                <span class="letter">K</span>
+                <span class="divider">|</span>
+                <span class="letter">N</span>
+            </div>
+            <div class="names">Карим & Нигина</div>
+            <p class="invite-text">Приглашение на свадьбу</p>
+            <p class="date">26.04.2025</p>
+        </div>
+    </div>
+
+    <!-- ВТОРОЙ БЛОК -->
+    <div class="second-screen">
+        <div class="guest-name">Дорогой <span id="guestName">Гость</span>,</div>
+        <p class="invite-text-2">
+            Мы рады сообщить Вам, что 26.04.2025 состоится самое главное торжество в нашей жизни — день нашей свадьбы!<br>
+            Приглашаем Вас разделить с нами радость этого незабываемого дня.
+        </p>
+    </div>
+
+    <script>
+        // Получаем имя гостя из URL (пример: ?name=Анна)
+        const urlParams = new URLSearchParams(window.location.search);
+        const guestName = urlParams.get('name');
+        if (guestName) {
+            document.getElementById('guestName').textContent = guestName;
+        }
+    </script>
 
 </body>
 </html>
