@@ -268,14 +268,20 @@
         }
         /* БЛОК С ТАЙМЕРОМ И ФОНОМ */
         .countdown-background {
-            margin-top: 30px;
-            background: url('https://github.com/broevanigina/wedding-invite/blob/main/photo_2025-03-25_01-49-42.jpg?raw=true') no-repeat center center/cover;
-            background-size: cover;
-            color: white;
-            padding: 50px 20px;
-            text-align: center;
-            position: relative;
-        }
+    margin-top: 30px;
+    background: url('https://github.com/broevanigina/wedding-invite/blob/main/photo_2025-03-25_01-49-42.jpg?raw=true') no-repeat center center/cover;
+    background-size: cover; /* Растягиваем фон на весь блок */
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+    position: relative;
+    width: 100%; /* Фиксируем ширину на 100% */
+    height: 100vh; /* Высота равна высоте видимой области экрана */
+    display: flex; /* Используем Flexbox для центрирования содержимого */
+    flex-direction: column; /* Размещаем элементы вертикально */
+    justify-content: center; /* Центрируем по вертикали */
+    align-items: center; /* Центрируем по горизонтали */
+}
         .countdown-title {
             font-family: 'Great Vibes', cursive;
             font-size: 45px;
