@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приглашение на свадьбу</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Didot&family=Great+Vibes&family=Playfair+Display:wght@500&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Didot', serif;
+            background: black;
+            color: white;
+            text-align: center;
+        }
+        /* ПЕРВЫЙ БЛОК */
+        .first-screen {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            background: url('https://github.com/broevanigina/wedding-invite/blob/main/photo_2025-03-24_14-38-55.jpg?raw=true') no-repeat center center/cover;
+            background-size: cover;
+            padding-bottom: 10%;
+        }
+        .container {
+            text-align: center;
+            width: 100%;
+            animation: fadeInUp 1.5s ease-out;
+        }
+        .initials {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 180px;
+            font-weight: 200;
+            color: white;
+        }
+        .divider {
+            font-size: 180px;
+            font-weight: 100;
+            margin: 0 12px;
+        }
+        .names {
+            font-family: 'Great Vibes', cursive;
+            font-size: 65px;
+            color: white;
+            margin-top: -10px;
+        }
+        .invite-text, .date {
+            font-size: 38px;
+            font-weight: 500;
+            color: white;
+            margin-top: 8px;
+        }
+        .date {
+            font-size: 40px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+        /* ВТОРОЙ БЛОК */
+        .second-screen {
+            padding: 10% 5%;
+            background: linear-gradient(to bottom, #fce4ec, #f8bbd0);
+            min-height: 100vh;
+            color: #4a4a4a;
+        }
+        .guest-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 55px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #880e4f;
+        }
+        .invite-text-2 {
+            font-family: 'Didot', serif;
+            font-size: 26px;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #4a4a4a;
+        }
+        /* КАЛЕНДАРЬ */
+        .calendar-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 30px auto;
+            padding: 15px;
+            background: #fde4f2;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .month {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            font-weight: bold;
+            color: #333;
+        }
+        .days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            font-size: 18px;
+            color: #555;
+        }
+        .days span {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            position: relative;
+        }
+        /* СЕРДЦЕ ВОКРУГ 26 */
+        .highlight {
+            font-weight: bold;
+            color: white;
+            background: #ff4081; /* Розовый фон */
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            animation: heartbeat 1.5s infinite ease-in-out; /* Добавляем анимацию */
+        }
+        /* Анимация "heartbeat" */
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 64, 129, 0.7); /* Розовый цвет */
+            }
+            50% {
+                transform: scale(1.3);
+                box-shadow: 0 0 0 10px rgba(255, 64, 129, 0.7);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 64, 129, 0.7);
+            }
+        }
+        /* ТАЙМИНГ МЕРОПРИЯТИЯ */
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+        }
+        .waiting-message {
+            font-family: 'Great Vibes', cursive;
+            font-size: 45px;
+            font-weight: 600;
+            color: white; /* Белый цвет текста */
+        }
+       .timing-label {
+    font-family: 'Great Vibes', cursive;
+    font-size: 55px;
+    font-weight: 600;
+    color: #880e4f;
+}
+        .timeline {
+            margin-top: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: -10px; /* Начинается выше первой метки */
+            bottom: -10px; /* Заканчивается ниже последней метки */
+            left: 20px;
+            width: 4px;
+            background: #ff4081; /* Яркий розовый фон */
+        }
+        .timeline-item {
+            margin-bottom: 20px;
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+        }
+        .timeline-dot {
+            position: absolute;
+            top: 10px; /* Корректировка положения точки */
+            left: 16px; /* Смещение точки влево */
+            width: 12px;
+            height: 12px;
+            background: #ffffff; /* Белый цвет точки */
+            border: 2px solid #ff4081; /* Контур точки */
+            border-radius: 50%;
+        }
+        .timeline-time {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-right: 20px;
+            width: 80px;
+            text-align: right;
+            margin-top: 5px; /* Чуть ниже спущено */
+        }
+        .timeline-content {
+            flex: 1;
+            text-align: left; /* Выравнивание текста по левому краю */
+        }
+        .timeline-event {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .timeline-description {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.5;
+        }
+.timeline-link {
+    display: inline-block;
+    background: transparent; /* Убираем фон */
+    color: #ff4081; /* Розовый цвет текста */
+    padding: 5px 10px;
+    text-decoration: none; /* Убираем подчеркивание */
+    border-radius: 5px;
+    border: 1px solid #ff4081; /* Розовая рамка */
+    transition: background 0.3s ease, color 0.3s ease; /* Плавный переход */
+}
+
+.timeline-link:hover {
+    background: #ffebf0; /* Светлый розовый фон при наведении */
+    color: #ff4081; /* Цвет текста остается розовым */
+}
+        /* БЛОК ПОДТВЕРЖДЕНИЯ */
+        .confirmation {
+            margin-top: 30px;
+            background: #fde4f2; /* Нежно-розовый фон */
+            padding: 20px;
+            text-align: center;
+            color: #333; /* Темно-серый текст */
+            font-family: 'Didot', serif;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .confirmation-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 45px; /* Уменьшенный размер заголовка */
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #880e4f; /* Цвет как у "Дорогой Гость" */
+        }
+        .confirmation-message {
+            font-family: 'Didot', serif;
+            font-size: 20px; /* Уменьшенный размер текста */
+            line-height: 1.6;
+            color: #4a4a4a;
+        }
+        .confirmation-date {
+            color: #ff4081; /* Розовый акцент для даты */
+            font-weight: bold;
+        }
+        /* БЛОК С ТАЙМЕРОМ И ФОНОМ */
+        .countdown-background {
+            margin-top: 30px;
+            background: url('https://github.com/broevanigina/wedding-invite/blob/main/photo_2025-03-25_01-49-42.jpg?raw=true') no-repeat center center/cover;
+            background-size: cover;
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            position: relative;
+        }
+        .countdown-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 45px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px; /* Расстояние между цифрами */
+            margin-bottom: 10px;
+        }
+        .timer-item {
+            font-size: 36px;
+            font-weight: bold;
+            min-width: 80px; /* Минимальная ширина для выравнивания */
+            text-align: center;
+        }
+        .countdown-labels {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px; /* Расстояние между метками */
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .label-item {
+            min-width: 80px; /* Минимальная ширина для выравнивания */
+            text-align: center;
+        }
+        .waiting-message {
+            font-family: 'Great Vibes', cursive;
+            font-size: 60px;
+            font-weight: 600;
+            margin-top: 30px;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding-bottom: 12%;
+            }
+            .initials {
+                font-size: 130px;
+            }
+            .divider {
+                font-size: 130px;
+                margin: 0 8px;
+            }
+            .names {
+                font-size: 50px;
+            }
+            .invite-text {
+                font-size: 30px;
+            }
+            .date {
+                font-size: 34px;
+            }
+            .guest-name {
+                font-size: 45px;
+            }
+            .invite-text-2 {
+                font-size: 22px;
+            }
+            .timeline-title {
+                font-size: 45px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ПЕРВЫЙ БЛОК -->
+    <div class="first-screen">
+        <div class="container">
+            <div class="initials">
+                <span class="letter">K</span>
+                <span class="divider">|</span>
+                <span class="letter">N</span>
+            </div>
+            <div class="names">Карим & Нигина</div>
+            <p class="invite-text">Приглашение на свадьбу</p>
+            <p class="date">26.04.2025</p>
+        </div>
+    </div>
+    <!-- ВТОРОЙ БЛОК -->
+    <div class="second-screen">
+        <div class="guest-name">Дорогая <span id="guestName">Гость</span>,</div>
+        <p class="invite-text-2">
+            Мы рады сообщить, что 26.04.2025 состоится важное торжество в нашей жизни — день свадьбы!<br>
+            Приглашаем тебя разделить с нами радость этого незабываемого дня.
+        </p>
+     <!-- КАЛЕНДАРЬ -->
+<div class="calendar-container">
+    <div class="month">Апрель 2025</div>
+    <div class="weekdays">
+        <span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span>
+    </div>
+    <div class="days">
+        <span></span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
+        <span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span>
+        <span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
+        <span>21</span><span>22</span><span>23</span><span>24</span><span>25</span>
+        <span class="highlight">26</span> <!-- Это число будет анимировано -->
+        <span>27</span><span>28</span><span>29</span><span>30</span>
+    </div>
+</div>
+
+<!-- БЛОК ЖДЕМ ВАС И ТАЙМИНГ НА ОДНОЙ СТРОКЕ -->
+<div class="waiting-and-timing">
+    <div class="timing-label">Тайминг мероприятия</div>
+</div>
+    <!-- ТАЙМИНГ МЕРОПРИЯТИЯ -->
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-time">16:15</div>
+            <div class="timeline-content">
+                <div class="timeline-event">Свадебная речь</div>
+                <div class="timeline-description">
+                    г. Тараз, ул. Петрова, 1<br>
+                    <a href="https://2gis.kz/taraz/geo/70030076202822969/71.375500,42.877752">Открыть на 2ГИС</a>
+                </div>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-time">18:30</div>
+            <div class="timeline-content">
+                <div class="timeline-event">Праздничный банкет</div>
+                <div class="timeline-description">
+                    г. Тараз, ул. Ташкентская, 142, банкетный зал Art Triumf <br>
+                    <a href="https://2gis.kz/taraz/geo/70000001082542060/71.376182,42.886992">Открыть на 2ГИС</a>
+                </div>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-time">00:00</div>
+            <div class="timeline-content">
+                <div class="timeline-event">Окончание вечера</div>
+            </div>
+        </div>
+    </div>
+
+<!-- БЛОК ПОДТВЕРЖДЕНИЯ -->
+<div class="confirmation">
+    <div class="confirmation-title">Подтверждение присутствия</div>
+    <div class="confirmation-message">
+        Пожалуйста, подтверди свое присутствие до 
+        <span class="confirmation-date">5 апреля 2025 года</span><br>
+    </div>
+</div>
+
+<!-- БЛОК С ТАЙМЕРОМ И ФОНОМ -->
+<div class="countdown-background">
+    <div class="countdown-title">До мероприятия:</div>
+    <div class="countdown-timer" id="countdownTimer">
+        <!-- Здесь будет отображаться таймер -->
+    </div>
+    <div class="countdown-labels">
+        <div class="label-item">Дней</div>
+        <div class="label-item">Часов</div>
+        <div class="label-item">Минут</div>
+        <div class="label-item">Секунд</div>
+    </div>
+    <div class="waiting-message">ЖДЕМ ТЕБЯ!</div>
+</div>
+</div>
+
+<!-- JavaScript для персонализации имени и таймера -->
+<script>
+    // Функция для извлечения параметров из URL
+    function getUrlParameter(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name) || 'Гость'; // Если параметр отсутствует, используем "Гость"
+    }
+    // Получаем имя гостя из URL
+    const guestName = getUrlParameter('name');
+    // Находим элемент с ID "guestName" и обновляем его текст
+    const guestSpan = document.getElementById('guestName');
+    if (guestSpan) {
+        guestSpan.textContent = guestName;
+    }
+    // Таймер до мероприятия
+    const countdownDate = new Date("April 26, 2025 00:00:00").getTime();
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
+        // Вычисляем дни, часы, минуты и секунды
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        // Обновляем HTML таймера
+        document.getElementById("countdownTimer").innerHTML = `
+            <div class="timer-item">${days}</div>
+            <div class="timer-item">${hours}</div>
+            <div class="timer-item">${minutes}</div>
+            <div class="timer-item">${seconds}</div>
+        `;
+        // Если мероприятие уже началось
+        if (distance < 0) {
+            clearInterval(interval);
+            document.getElementById("countdownTimer").innerHTML = "Мероприятие началось!";
+        }
+    }
+    // Обновляем таймер каждую секунду
+    const interval = setInterval(updateCountdown, 1000);
+    // Первый вызов для немедленного отображения
+    updateCountdown();
+</script>
+</body>
+</html>
